@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>ARK | Business Hub — Pig Farm</title>
+<style>
+/* ── RESET ─────────────────────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#f4f7f5;min-height:100vh;}
+button{cursor:pointer;font-family:inherit;}
+input,select,textarea{font-family:inherit;}
+
+/* ── HEADER ────────────────────────────────────────────────── */
+#header{background:linear-gradient(135deg,#0f2d1e,#1a3d2b);color:#fff;padding:0 24px;box-shadow:0 2px 16px rgba(0,0,0,.3);position:sticky;top:0;z-index:50;}
+#header-top{display:flex;align-items:center;justify-content:space-between;height:64px;}
+.ark-logo{display:flex;align-items:center;}
+.ark-logo .ark{font-weight:900;font-size:22px;color:#fff;letter-spacing:-1px;font-family:'Arial Black',sans-serif;}
+.ark-logo .divider{width:2px;height:22px;background:#4ade80;margin:0 8px;border-radius:2px;display:inline-block;}
+.ark-logo .hub{font-weight:800;font-size:14px;color:#e2e8f0;letter-spacing:1px;}
+#header-right{text-align:right;}
+#header-right .label{font-size:11px;color:#86efac;font-weight:600;text-transform:uppercase;letter-spacing:.8px;}
+#hdr-balance{font-size:14px;font-weight:800;margin-top:2px;}
+#sync-status{font-size:11px;color:#86efac;margin-top:2px;font-weight:600;}
+
+/* ── NAV ────────────────────────────────────────────────────── */
+#tab-nav{display:flex;gap:2px;overflow-x:auto;}
+.tab-btn{background:none;border:none;color:#86efac;padding:10px 16px;font-size:13px;font-weight:500;border-bottom:3px solid transparent;white-space:nowrap;transition:all .15s;}
+.tab-btn.active{color:#fff;font-weight:700;border-bottom:3px solid #4ade80;}
+.tab-btn:hover{color:#fff;}
+
+/* ── SEARCH ─────────────────────────────────────────────────── */
+#search-bar{background:#fff;padding:12px 24px;border-bottom:1px solid #e8e8e8;display:none;}
+#search-input{width:100%;max-width:320px;padding:10px 12px;border-radius:8px;border:1.5px solid #e0e0e0;font-size:14px;outline:none;background:#fafafa;}
+
+/* ── CONTENT ────────────────────────────────────────────────── */
+#content{padding:24px;max-width:1200px;margin:0 auto;}
+.tab-pane{display:none;}
+.tab-pane.active{display:block;}
+
+/* ── STAT CARDS ─────────────────────────────────────────────── */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-bottom:20px;}
+.stat-card{background:#fff;border-radius:14px;padding:18px 20px;box-shadow:0 2px 12px rgba(0,0,0,.07);border-left:4px solid #1a3d2b;}
+.stat-label{font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px;}
+.stat-value{font-size:22px;font-weight:800;color:#1a1a1a;}
+.stat-sub{font-size:12px;color:#888;margin-top:4px;}
+
+/* ── HERO ────────────────────────────────────────────────────── */
+.hero-card{background:linear-gradient(135deg,#0f2d1e,#1a3d2b);border-radius:16px;padding:20px 24px;margin-bottom:20px;color:#fff;}
+.hero-label{font-size:12px;font-weight:700;color:#86efac;margin-bottom:12px;letter-spacing:1px;text-transform:uppercase;}
+.hero-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.hero-item-label{font-size:11px;margin-bottom:4px;}
+.hero-item-value{font-size:24px;font-weight:900;}
+
+/* ── WHITE CARD ──────────────────────────────────────────────── */
+.white-card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.07);margin-bottom:16px;}
+.white-card h3{margin:0 0 14px;font-size:14px;color:#444;font-weight:700;}
+
+/* ── TABLE ───────────────────────────────────────────────────── */
+.data-table{width:100%;border-collapse:collapse;}
+.data-table thead tr{background:#1a3d2b;}
+.data-table thead th{padding:12px 16px;text-align:left;font-size:11px;font-weight:700;color:#86efac;text-transform:uppercase;white-space:nowrap;}
+.data-table tbody tr{border-top:1px solid #f0f0f0;}
+.data-table tbody tr:nth-child(even){background:#fafafa;}
+.data-table tbody td{padding:11px 16px;font-size:13px;color:#333;}
+.td-actions{display:flex;gap:6px;}
+
+/* ── BUTTONS ─────────────────────────────────────────────────── */
+.btn{border:none;border-radius:10px;padding:10px 20px;font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:6px;transition:opacity .15s;}
+.btn:hover{opacity:.85;}
+.btn-green{background:#1a3d2b;color:#fff;}
+.btn-blue{background:#3b82f6;color:#fff;}
+.btn-red{background:#ef4444;color:#fff;}
+.btn-gray{background:#e5e7eb;color:#555;}
+.btn-amber{background:#f59e0b;color:#fff;}
+.btn-sm{padding:5px 12px;font-size:12px;border-radius:8px;}
+
+/* ── TOOLBAR ─────────────────────────────────────────────────── */
+.toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px;}
+.toolbar-left{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+
+/* ── BADGES ──────────────────────────────────────────────────── */
+.badge{border-radius:20px;padding:2px 10px;font-size:11px;font-weight:700;color:#fff;display:inline-block;}
+/* ── FIX: cat-badge now white text on solid green ── */
+.cat-badge{background:#1a3d2b;color:#fff;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:700;white-space:nowrap;display:inline-block;}
+/* Audit action badges */
+.audit-add{background:#1a3d2b;color:#fff;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:700;}
+.audit-edit{background:#3b82f6;color:#fff;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:700;}
+.audit-delete{background:#ef4444;color:#fff;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:700;}
+
+/* ── ADMIN PIN BANNER ────────────────────────────────────────── */
+#admin-banner{background:#fff3cd;border-bottom:2px solid #f59e0b;padding:10px 24px;display:flex;align-items:center;gap:12px;font-size:13px;}
+#admin-banner span{font-weight:700;color:#b45309;}
+#admin-banner select{padding:6px 10px;border-radius:8px;border:1.5px solid #f59e0b;font-size:13px;font-weight:700;color:#1a1a1a;outline:none;background:#fff;}
+#admin-banner .admin-indicator{font-size:12px;color:#555;}
+
+/* ── MODAL ───────────────────────────────────────────────────── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:100;display:none;align-items:center;justify-content:center;padding:16px;}
+.modal-overlay.open{display:flex;}
+.modal-box{background:#fff;border-radius:16px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3);}
+.modal-header{display:flex;justify-content:space-between;align-items:center;padding:20px 24px 0;}
+.modal-header h2{margin:0;font-size:18px;color:#1a1a1a;font-weight:700;}
+.modal-close{border:none;background:#f0f0f0;border-radius:8px;width:32px;height:32px;font-size:14px;font-weight:700;color:#555;}
+.modal-body{padding:24px;}
+.field{margin-bottom:16px;}
+.field label{display:block;font-size:12px;font-weight:600;color:#555;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;}
+.field input,.field select,.field textarea{width:100%;padding:10px 12px;border-radius:8px;border:1.5px solid #e0e0e0;font-size:14px;outline:none;background:#fafafa;box-sizing:border-box;}
+.field input.required-highlight{border-color:#f59e0b;background:#fffbeb;}
+.field textarea{resize:vertical;height:70px;}
+.modal-footer{display:flex;gap:10px;justify-content:flex-end;margin-top:8px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.admin-field{background:#f0fdf4;border-radius:10px;padding:12px 14px;margin-bottom:16px;border:1.5px solid #86efac;}
+.admin-field label{color:#1a3d2b !important;}
+.admin-field input{border-color:#4ade80 !important;background:#fff !important;}
+
+/* ── PIG CARDS ───────────────────────────────────────────────── */
+.pig-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+.pig-card{background:#fff;border-radius:14px;padding:16px;box-shadow:0 2px 12px rgba(0,0,0,.07);}
+
+/* ── MANAGER CARDS ───────────────────────────────────────────── */
+.manager-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;}
+.manager-card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.07);}
+
+/* ── PROGRESS ────────────────────────────────────────────────── */
+.prog-bg{background:#f0f0f0;border-radius:99px;height:7px;margin-top:6px;}
+.prog-fill{border-radius:99px;height:7px;}
+
+/* ── TOAST ───────────────────────────────────────────────────── */
+#toast{position:fixed;bottom:24px;right:24px;z-index:999;background:#1a3d2b;color:#fff;padding:12px 20px;border-radius:10px;font-size:13px;font-weight:600;box-shadow:0 4px 20px rgba(0,0,0,.2);opacity:0;transform:translateY(10px);transition:all .3s;pointer-events:none;}
+#toast.show{opacity:1;transform:translateY(0);}
+#toast.error{background:#ef4444;}
+#toast.warn{background:#f59e0b;}
+
+/* ── EMPTY / LOADING ─────────────────────────────────────────── */
+.empty{text-align:center;padding:60px;color:#bbb;}
+.empty-icon{font-size:48px;margin-bottom:12px;}
+.loading-msg{text-align:center;padding:40px;color:#888;font-size:14px;}
+
+/* ── AUDIT LOG ROW HIGHLIGHT ─────────────────────────────────── */
+.audit-today{background:#fffbeb !important;}
+
+@media(max-width:600px){
+  .hero-grid{grid-template-columns:1fr;gap:8px;}
+  .field-row{grid-template-columns:1fr;}
+  #content{padding:12px;}
+  .hero-item-value{font-size:18px;}
+}
+</style>
+<script>
+/* PREVIEW-ONLY: mock the backend with safe dummy data (no real records). */
+(function(){
+  var DUMMY={
+    funds:[
+      {source:"Investor A",amount:150000,date:"2026-08-01"},
+      {source:"Investor B",amount:100000,date:"2026-09-01"},
+      {source:"Owner Capital",amount:50000,date:"2026-07-15"}
+    ],
+    expenses:[
+      {description:"Grower feed — 20 sacks",amount:42000,category:"Feed & Vitamins",date:"2026-10-05"},
+      {description:"Vaccines & vitamins",amount:8500,category:"Medicines & Vaccines",date:"2026-10-10"},
+      {description:"Caretaker salary",amount:18000,category:"Salaries & Labor",date:"2026-10-30"},
+      {description:"Water pump repair",amount:5200,category:"Equipment & Repairs",date:"2026-10-12"},
+      {description:"Electricity",amount:3400,category:"Utilities",date:"2026-10-28"}
+    ],
+    sales:[
+      {tag:"A-012",weight:98,totalprice:19600,date:"2026-10-20"},
+      {tag:"A-008",weight:105,totalprice:21000,date:"2026-10-22"},
+      {tag:"A-003",weight:92,totalprice:18400,date:"2026-11-02"}
+    ],
+    pigs:(function(){var a=[];var st=["Weaner","Grower","Grower","Fattening","Fattening","Fattening"];
+      for(var i=1;i<=16;i++){a.push({tag:"A-"+String(i).padStart(3,"0"),stage:st[i%st.length],weight:30+((i*7)%80),breed:(i%2?"Landrace":"Large White"),date:"2026-09-"+String((i%27)+1).padStart(2,"0")});}
+      a[2].stage="Sold";a[7].stage="Sold";a[11].stage="Sold";return a;})(),
+    "Audit Log":[
+      {adminName:"Manager",action:"Added Sale",details:"Pig #A-012 • PHP 19,600",time:"2026-10-20 14:03"},
+      {adminName:"Investor A",action:"Added Fund",details:"PHP 100,000",time:"2026-09-01 09:12"},
+      {adminName:"Manager",action:"Added Expense",details:"Grower feed • PHP 42,000",time:"2026-10-05 08:40"}
+    ]
+  };
+  function R(o){return Promise.resolve(new Response(JSON.stringify(o),{headers:{"Content-Type":"application/json"}}));}
+  window.fetch=function(url,opts){
+    try{var b=JSON.parse((opts&&opts.body)||"{}");
+      if(b.action==="getAll"){return R({success:true,data:(DUMMY[b.sheet]||[])});}
+      return R({success:true});
+    }catch(e){return R({success:true,data:[]});}
+  };
+  try{localStorage.setItem("ark_admin","Manager");}catch(e){}
+})();
+</script>
+</head>
+<body>
+
+<!-- HEADER -->
+<div id="header">
+  <div id="header-top">
+    <div class="ark-logo">
+      <span class="ark">ARK</span>
+      <span class="divider"></span>
+      <span class="hub">BUSINESS HUB</span>
+    </div>
+    <div id="header-right">
+      <div class="label">Pig Farm Division</div>
+      <div id="hdr-balance" style="color:#4ade80">Loading...</div>
+      <div id="sync-status">⟳ Connecting...</div>
+    </div>
+  </div>
+  <div id="tab-nav">
+    <button class="tab-btn active" data-tab="dashboard">📊 Dashboard</button>
+    <button class="tab-btn" data-tab="pigs">🐷 Pigs</button>
+    <button class="tab-btn" data-tab="funds">💰 Funds</button>
+    <button class="tab-btn" data-tab="expenses">📋 Expenses</button>
+    <button class="tab-btn" data-tab="sales">🏷️ Sales</button>
+    <button class="tab-btn" data-tab="team">👤 Team</button>
+    <button class="tab-btn" data-tab="auditlog">🔐 Audit Log</button>
+  </div>
+</div>
+
+<!-- ADMIN SELECTOR BANNER -->
+<div id="admin-banner">
+  <span>👤 Active Admin:</span>
+  <select id="active-admin" onchange="onAdminChange()">
+    <option value="">— Select Admin —</option>
+    <option>Rannie</option>
+    <option>Kent</option>
+    <option>Alex</option>
+  </select>
+  <span class="admin-indicator" id="admin-indicator">⚠ Please select an admin to make changes.</span>
+</div>
+
+<!-- SEARCH (Pigs only) -->
+<div id="search-bar">
+  <input id="search-input" placeholder="🔍  Search by tag or name..." oninput="renderPigs()"/>
+</div>
+
+<!-- CONTENT -->
+<div id="content">
+  <div id="pane-dashboard" class="tab-pane active"><div class="loading-msg">⟳ Loading dashboard...</div></div>
+  <div id="pane-pigs"      class="tab-pane"><div class="loading-msg">⟳ Loading pigs...</div></div>
+  <div id="pane-funds"     class="tab-pane"><div class="loading-msg">⟳ Loading funds...</div></div>
+  <div id="pane-expenses"  class="tab-pane"><div class="loading-msg">⟳ Loading expenses...</div></div>
+  <div id="pane-sales"     class="tab-pane"><div class="loading-msg">⟳ Loading sales...</div></div>
+  <div id="pane-team"      class="tab-pane"><div class="loading-msg">⟳ Loading team...</div></div>
+  <div id="pane-auditlog"  class="tab-pane"><div class="loading-msg">⟳ Loading audit log...</div></div>
+</div>
+
+<div id="toast"></div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2 id="modal-title">Form</h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════════
+// ARK | Business Hub — Pig Farm  FINAL VERSION
+// - Category filter bug FIXED (normalized string comparison)
+// - Audit Log with Google Sheets sync
+// - Admin authentication on every write action
+// ════════════════════════════════════════════════════════════
+
+var APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxS9gohM8_X8ZSO9Y0l-XqC2BsVjBiIjJul2RhIucnwsrG8J-d8KM7x7cDwG4Ifuf_4PA/exec";
+
+var CATEGORIES = ["Feed & Vitamins","Medicines & Vaccines","Salaries & Labor","Equipment & Repairs","Utilities","Other"];
+var PIG_STAGES = ["Piglet","Weaner","Grower","Finisher","Breeder","Sold","Deceased"];
+var STAGE_COLORS = {Piglet:"#f59e0b",Weaner:"#3b82f6",Grower:"#8b5cf6",Finisher:"#ec4899",Breeder:"#14b8a6",Sold:"#6b7280",Deceased:"#ef4444"};
+var ADMINS    = ["Rannie","Kent","Alex"];
+var INVESTORS = ["Rannie","Kent","Alex"];
+
+var DB = { funds:[], expenses:[], sales:[], pigs:[], auditlog:[] };
+var currentTab = "dashboard";
+
+// ════════════════════════════════════════════════════════════
+// ADMIN MANAGEMENT
+// ════════════════════════════════════════════════════════════
+function getAdmin() {
+  return document.getElementById("active-admin").value.trim();
+}
+function requireAdmin() {
+  var a = getAdmin();
+  if (!a) { toast("⚠ Please select an admin first!", "warn"); return null; }
+  return a;
+}
+function onAdminChange() {
+  var a = getAdmin();
+  var ind = document.getElementById("admin-indicator");
+  if (a) {
+    ind.textContent = "✅ Logged in as " + a + " — all changes will be recorded.";
+    ind.style.color = "#1a3d2b";
+  } else {
+    ind.textContent = "⚠ Please select an admin to make changes.";
+    ind.style.color = "#b45309";
+  }
+}
+
+// ════════════════════════════════════════════════════════════
+// HELPERS
+// ════════════════════════════════════════════════════════════
+function fmt(n) { return "₱"+Number(n||0).toLocaleString("en-PH",{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function today() { return new Date().toISOString().slice(0,10); }
+function daysOld(dob) {
+  var d = Math.floor((new Date()-new Date(dob))/86400000);
+  return d<30?d+"d":d<365?Math.floor(d/30)+"mo":(d/365).toFixed(1)+"yr";
+}
+function esc(s) { return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+// ── KEY FIX: normalize category strings for comparison ───────
+// This fixes "Equipment & Repairs" not matching after esc() converts & to &amp;
+function normStr(s) {
+  return String(s||"").trim().toLowerCase()
+    .replace(/&amp;/gi,"&")   // unescape HTML entities
+    .replace(/&#38;/gi,"&")   // alternate encoding
+    .replace(/\s+/g," ");     // collapse spaces
+}
+
+function getCat(e) {
+  // Try all possible key variations Google Sheets might return
+  return e.category || e.Category || e["category"] || "";
+}
+
+function isToday(dateStr) {
+  if (!dateStr) return false;
+  return String(dateStr).slice(0,10) === today();
+}
+
+function toast(msg, type) {
+  var t = document.getElementById("toast");
+  t.textContent = msg;
+  t.className = "show" + (type==="error"?" error":type==="warn"?" warn":"");
+  setTimeout(function(){ t.className=""; }, 3500);
+}
+function setSyncStatus(msg) { document.getElementById("sync-status").textContent = msg; }
+function setBalance() {
+  var funds = DB.funds.reduce(function(s,f){ return s+Number(f.amount||0); },0);
+  var exp   = DB.expenses.reduce(function(s,e){ return s+Number(e.amount||0); },0);
+  var bal   = funds-exp;
+  var el    = document.getElementById("hdr-balance");
+  el.textContent = "Balance: "+fmt(bal);
+  el.style.color = bal>=0?"#4ade80":"#f87171";
+}
+
+// ════════════════════════════════════════════════════════════
+// API — auto-detects standalone vs Apps Script hosted
+// ════════════════════════════════════════════════════════════
+var IS_GAS = (typeof google!=="undefined" && google.script);
+
+function api(action, sheetName, row) {
+  return new Promise(function(resolve, reject) {
+    if (IS_GAS) {
+      var r = google.script.run
+        .withSuccessHandler(resolve)
+        .withFailureHandler(reject);
+      if (action==="getAll")    r.getAllRows(sheetName);
+      else if (action==="addRow")    r.addRow(sheetName, row);
+      else if (action==="updateRow") r.updateRow(sheetName, row);
+      else if (action==="deleteRow") r.deleteRow(sheetName, row);
+      else if (action==="logAudit")  r.logAudit(row.adminName, row.action, row.details);
+    } else {
+      fetch(APPS_SCRIPT_URL, {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({action:action, sheet:sheetName, row:row||{}})
+      })
+      .then(function(res){
+        var ct = res.headers.get("content-type")||"";
+        if (ct.indexOf("application/json")>-1) return res.json();
+        return res.text().then(function(t){ throw new Error("Non-JSON: "+t.slice(0,200)); });
+      })
+      .then(resolve).catch(reject);
+    }
+  });
+}
+
+// Write to Audit Log sheet in Google Sheets
+function auditLog(action, details) {
+  var admin = getAdmin();
+  if (!admin) return; // no admin = no log (shouldn't reach here)
+  api("logAudit","Audit Log",{ adminName:admin, action:action, details:details })
+    .catch(function(e){ console.warn("Audit log failed:", e); });
+}
+
+// ════════════════════════════════════════════════════════════
+// LOAD ALL DATA
+// ════════════════════════════════════════════════════════════
+function loadAll() {
+  setSyncStatus("⟳ Syncing...");
+  var sheets = ["funds","expenses","sales","pigs"];
+  var done=0, errors=0;
+  sheets.forEach(function(name) {
+    api("getAll", name)
+      .then(function(res){
+        if (res&&res.success&&Array.isArray(res.data)) DB[name]=res.data;
+        else if (res&&res.error){ console.warn(name,res.error); errors++; }
+      })
+      .catch(function(e){ console.error(name,e); errors++; })
+      .finally(function(){
+        done++;
+        if (done===sheets.length) {
+          setBalance(); renderCurrentTab();
+          setSyncStatus(errors===0?"✅ Synced "+new Date().toLocaleTimeString():"⚠ Partial ("+errors+" errors)");
+        }
+      });
+  });
+}
+
+function loadAuditLog() {
+  setSyncStatus("⟳ Loading audit log...");
+  api("getAll","Audit Log")
+    .then(function(res){
+      DB.auditlog = (res&&res.success&&Array.isArray(res.data)) ? res.data : [];
+      renderAuditLog();
+      setSyncStatus("✅ Synced "+new Date().toLocaleTimeString());
+    })
+    .catch(function(){ DB.auditlog=[]; renderAuditLog(); });
+}
+
+// ════════════════════════════════════════════════════════════
+// TAB NAVIGATION
+// ════════════════════════════════════════════════════════════
+document.querySelectorAll(".tab-btn").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    document.querySelectorAll(".tab-btn").forEach(function(b){ b.classList.remove("active"); });
+    document.querySelectorAll(".tab-pane").forEach(function(p){ p.classList.remove("active"); });
+    btn.classList.add("active");
+    currentTab = btn.dataset.tab;
+    document.getElementById("pane-"+currentTab).classList.add("active");
+    document.getElementById("search-bar").style.display = currentTab==="pigs"?"":"none";
+    renderCurrentTab();
+  });
+});
+
+function renderCurrentTab() {
+  if      (currentTab==="dashboard") renderDashboard();
+  else if (currentTab==="pigs")      renderPigs();
+  else if (currentTab==="funds")     renderFunds();
+  else if (currentTab==="expenses")  renderExpenses();
+  else if (currentTab==="sales")     renderSales();
+  else if (currentTab==="team")      renderTeam();
+  else if (currentTab==="auditlog")  loadAuditLog();
+}
+
+// ════════════════════════════════════════════════════════════
+// DASHBOARD
+// ════════════════════════════════════════════════════════════
+function renderDashboard() {
+  var tF=DB.funds.reduce(function(s,f){return s+Number(f.amount||0);},0);
+  var tE=DB.expenses.reduce(function(s,e){return s+Number(e.amount||0);},0);
+  var tS=DB.sales.reduce(function(s,r){return s+Number(r.totalprice||0);},0);
+  var bal=tF-tE, profit=tS-tE;
+  var active=DB.pigs.filter(function(p){return p.stage!=="Sold"&&p.stage!=="Deceased";}).length;
+  var sold=DB.pigs.filter(function(p){return p.stage==="Sold";}).length;
+
+  // Expense by category — use normStr for matching
+  var catRows=CATEGORIES.map(function(c){
+    var total=DB.expenses.filter(function(e){ return normStr(getCat(e))===normStr(c); })
+                         .reduce(function(s,e){return s+Number(e.amount||0);},0);
+    return {name:c,total:total};
+  }).filter(function(c){return c.total>0;}).sort(function(a,b){return b.total-a.total;});
+
+  var catHTML=catRows.length===0?'<p style="color:#aaa;font-size:13px">No expenses yet.</p>'
+    :catRows.map(function(c){
+      var pct=tE>0?(c.total/tE*100).toFixed(1):0;
+      return '<div style="margin-bottom:10px">'
+        +'<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px">'
+        +'<span style="color:#555;font-weight:600">'+esc(c.name)+'</span>'
+        +'<span style="color:#222;font-weight:700">'+fmt(c.total)+' <span style="color:#aaa">('+pct+'%)</span></span></div>'
+        +'<div class="prog-bg"><div class="prog-fill" style="background:#1a3d2b;width:'+pct+'%"></div></div></div>';
+    }).join("");
+
+  var invHTML=INVESTORS.map(function(name){
+    var c=DB.funds.filter(function(f){return f.source===name;}).reduce(function(s,f){return s+Number(f.amount||0);},0);
+    var pct=tF>0?(c/tF*100).toFixed(1):0;
+    return '<div style="margin-bottom:12px">'
+      +'<div style="display:flex;justify-content:space-between;margin-bottom:4px">'
+      +'<span style="font-weight:700;font-size:13px">👤 '+esc(name)+'</span>'
+      +'<span style="font-weight:700;font-size:13px;color:#1a3d2b">'+fmt(c)+' <span style="color:#aaa;font-size:11px">'+pct+'%</span></span></div>'
+      +'<div class="prog-bg"><div class="prog-fill" style="background:#4ade80;width:'+pct+'%"></div></div></div>';
+  }).join("");
+
+  var monthly={};
+  DB.funds.forEach(function(f){var m=String(f.date||"").slice(0,7);if(m.length<7)return;if(!monthly[m])monthly[m]={added:0,expenses:0};monthly[m].added+=Number(f.amount||0);});
+  DB.expenses.forEach(function(e){var m=String(e.date||"").slice(0,7);if(m.length<7)return;if(!monthly[m])monthly[m]={added:0,expenses:0};monthly[m].expenses+=Number(e.amount||0);});
+  var monthHTML=Object.keys(monthly).sort().map(function(m){
+    var d=monthly[m],b=d.added-d.expenses,lbl=m;
+    try{lbl=new Date(m+"-01").toLocaleDateString("en-PH",{month:"long",year:"numeric"});}catch(e){}
+    return '<tr><td style="padding:10px 14px;font-weight:700">'+esc(lbl)+'</td>'
+      +'<td style="padding:10px 14px;color:#3b82f6;font-weight:700">'+fmt(d.added)+'</td>'
+      +'<td style="padding:10px 14px;color:#ef4444;font-weight:700">'+fmt(d.expenses)+'</td>'
+      +'<td style="padding:10px 14px;font-weight:800;color:'+(b>=0?"#1a3d2b":"#ef4444")+'">'+fmt(b)+'</td></tr>';
+  }).join("")||'<tr><td colspan="4" style="padding:20px;text-align:center;color:#bbb">No data yet.</td></tr>';
+
+  var rE=DB.expenses.slice().sort(function(a,b){return String(b.date)>String(a.date)?1:-1;}).slice(0,5);
+  var rS=DB.sales.slice().sort(function(a,b){return String(b.date)>String(a.date)?1:-1;}).slice(0,5);
+  var rEHTML=rE.length===0?'<p style="color:#aaa;font-size:13px">No expenses yet.</p>'
+    :rE.map(function(e){return '<div style="display:flex;justify-content:space-between;border-bottom:1px solid #f5f5f5;padding-bottom:8px;margin-bottom:8px">'
+      +'<div><div style="font-weight:600;font-size:13px">'+esc(e.description)+'</div>'
+      +'<div style="font-size:11px;color:#999">'+esc(getCat(e))+(e.date?" • "+e.date:"")+'</div></div>'
+      +'<span style="font-weight:700;color:#ef4444;white-space:nowrap">'+fmt(e.amount)+'</span></div>';}).join("");
+  var rSHTML=rS.length===0?'<p style="color:#aaa;font-size:13px">No sales yet.</p>'
+    :rS.map(function(s){return '<div style="display:flex;justify-content:space-between;border-bottom:1px solid #f5f5f5;padding-bottom:8px;margin-bottom:8px">'
+      +'<div><div style="font-weight:600;font-size:13px">Pig #'+esc(s.tag)+'</div>'
+      +'<div style="font-size:11px;color:#999">'+esc(s.weight||"")+'kg • '+esc(s.date||"")+'</div></div>'
+      +'<span style="font-weight:700;color:#1a3d2b;white-space:nowrap">'+fmt(s.totalprice)+'</span></div>';}).join("");
+
+  document.getElementById("pane-dashboard").innerHTML=
+    '<div class="hero-card"><div class="hero-label">ARK Pig Farm — Financial Overview</div>'
+    +'<div class="hero-grid">'
+    +'<div><div class="hero-item-label" style="color:#86efac">TOTAL FUNDS</div><div class="hero-item-value">'+fmt(tF)+'</div></div>'
+    +'<div><div class="hero-item-label" style="color:#fca5a5">TOTAL EXPENSES</div><div class="hero-item-value">'+fmt(tE)+'</div></div>'
+    +'<div><div class="hero-item-label" style="color:'+(bal>=0?"#86efac":"#fca5a5")+'">NET BALANCE</div>'
+    +'<div class="hero-item-value" style="color:'+(bal>=0?"#4ade80":"#f87171")+'">'+fmt(bal)+'</div></div>'
+    +'</div></div>'
+    +'<div class="stat-grid">'
+    +'<div class="stat-card" style="border-left-color:#1a3d2b"><div style="display:flex;justify-content:space-between"><div><div class="stat-label">Active Pigs</div><div class="stat-value">'+active+'</div><div class="stat-sub">'+sold+' sold</div></div><span style="font-size:28px">🐷</span></div></div>'
+    +'<div class="stat-card" style="border-left-color:#8b5cf6"><div style="display:flex;justify-content:space-between"><div><div class="stat-label">Sales Revenue</div><div class="stat-value">'+fmt(tS)+'</div></div><span style="font-size:28px">🏷️</span></div></div>'
+    +'<div class="stat-card" style="border-left-color:'+(profit>=0?"#1a3d2b":"#ef4444")+'"><div style="display:flex;justify-content:space-between"><div><div class="stat-label">Net Profit/Loss</div><div class="stat-value">'+fmt(profit)+'</div></div><span style="font-size:28px">📈</span></div></div>'
+    +'<div class="stat-card" style="border-left-color:#ef4444"><div style="display:flex;justify-content:space-between"><div><div class="stat-label">Total Expenses</div><div class="stat-value">'+fmt(tE)+'</div></div><span style="font-size:28px">📋</span></div></div>'
+    +'</div>'
+    +'<div class="white-card"><h3>📅 Monthly Summary</h3><div style="overflow-x:auto"><table class="data-table"><thead><tr><th>Month</th><th>Added Funds</th><th>Expenses</th><th>Balance</th></tr></thead><tbody>'+monthHTML+'</tbody></table></div></div>'
+    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">'
+    +'<div class="white-card" style="margin:0"><h3>💸 Expense Breakdown</h3>'+catHTML+'</div>'
+    +'<div class="white-card" style="margin:0"><h3>👥 Investor Contributions</h3>'+invHTML+'</div></div>'
+    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">'
+    +'<div class="white-card" style="margin:0"><h3>🕐 Recent Expenses</h3>'+rEHTML+'</div>'
+    +'<div class="white-card" style="margin:0"><h3>🕐 Recent Sales</h3>'+rSHTML+'</div></div>';
+}
+
+// ════════════════════════════════════════════════════════════
+// PIGS
+// ════════════════════════════════════════════════════════════
+function renderPigs() {
+  var search=((document.getElementById("search-input")||{}).value||"").toLowerCase();
+  var sf=document.getElementById("pig-stage-filter")?document.getElementById("pig-stage-filter").value:"All";
+  var filtered=DB.pigs.filter(function(p){
+    return (sf==="All"||p.stage===sf)&&(!search||(p.tag||"").toLowerCase().indexOf(search)>-1||(p.name||"").toLowerCase().indexOf(search)>-1);
+  });
+  var sOpts='<option value="All">All Stages</option>'+PIG_STAGES.map(function(s){return '<option value="'+s+'"'+(sf===s?" selected":"")+'>'+s+'</option>';}).join("");
+  var cards=filtered.length===0?'<div class="empty"><div class="empty-icon">🐷</div><p>No pigs found.</p></div>'
+    :filtered.map(function(p){
+      var col=STAGE_COLORS[p.stage]||"#ccc";
+      return '<div class="pig-card" style="border-top:3px solid '+col+'">'
+        +'<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">'
+        +'<div><div style="font-weight:800;font-size:16px">🐷 '+esc(p.name||"Pig #"+p.tag)+'</div>'
+        +'<div style="font-size:12px;color:#888;margin-top:2px">Tag: <b>'+esc(p.tag||"")+'</b> • '+esc(p.gender||"")+'</div></div>'
+        +'<span class="badge" style="background:'+col+'">'+esc(p.stage||"")+'</span></div>'
+        +'<div style="font-size:12px;color:#666;line-height:1.8">'
+        +(p.dob?'<div>📅 Born: '+esc(p.dob)+' ('+daysOld(p.dob)+' old)</div>':'')
+        +(p.mother?'<div>🐷 Mother: '+esc(p.mother)+'</div>':'')
+        +(p.father?'<div>🐗 Father: '+esc(p.father)+'</div>':'')
+        +(p.notes?'<div style="color:#999;font-style:italic">'+esc(p.notes)+'</div>':'')
+        +'</div><div style="display:flex;gap:8px;margin-top:12px">'
+        +'<button class="btn btn-blue btn-sm" onclick="openPigModal('+p.id+')">✏️ Edit</button>'
+        +'<button class="btn btn-red btn-sm" onclick="deletePig('+p.id+')">🗑️ Delete</button>'
+        +'</div></div>';
+    }).join("");
+  document.getElementById("pane-pigs").innerHTML=
+    '<div class="toolbar"><div class="toolbar-left">'
+    +'<button class="btn btn-green" onclick="openPigModal()">+ Add Pig</button>'
+    +'<select id="pig-stage-filter" class="btn btn-gray" onchange="renderPigs()" style="padding:10px 14px">'+sOpts+'</select>'
+    +'</div><span style="font-size:13px;color:#666;font-weight:600">'+filtered.length+' pig(s)</span></div>'
+    +'<div class="pig-grid">'+cards+'</div>';
+}
+
+function openPigModal(id) {
+  var p=id!==undefined?DB.pigs.find(function(x){return x.id===id;}):null;
+  var sOpts=PIG_STAGES.map(function(s){return '<option'+(p&&p.stage===s?" selected":"")+'>'+s+'</option>';}).join("");
+  document.getElementById("modal-title").textContent=p?"Edit Pig":"Add New Pig";
+  document.getElementById("modal-body").innerHTML=
+    adminField()
+    +'<div class="field"><label>Ear Tag / ID *</label><input id="f-tag" value="'+esc(p?p.tag:"")+'"/></div>'
+    +'<div class="field"><label>Name</label><input id="f-name" value="'+esc(p?p.name:"")+'"/></div>'
+    +'<div class="field-row">'
+    +'<div class="field"><label>Date of Birth</label><input type="date" id="f-dob" value="'+esc(p?p.dob:"")+'"/></div>'
+    +'<div class="field"><label>Gender</label><select id="f-gender">'+['Female','Male','Castrated'].map(function(g){return '<option'+(p&&p.gender===g?" selected":"")+'>'+g+'</option>';}).join("")+'</select></div></div>'
+    +'<div class="field"><label>Stage</label><select id="f-stage">'+sOpts+'</select></div>'
+    +'<div class="field-row">'
+    +'<div class="field"><label>Mother Tag</label><input id="f-mother" value="'+esc(p?p.mother:"")+'"/></div>'
+    +'<div class="field"><label>Father Tag</label><input id="f-father" value="'+esc(p?p.father:"")+'"/></div></div>'
+    +'<div class="field"><label>Notes</label><textarea id="f-notes">'+esc(p?p.notes:"")+'</textarea></div>'
+    +'<div class="modal-footer">'
+    +'<button class="btn btn-gray" onclick="closeModal()">Cancel</button>'
+    +'<button class="btn btn-green" onclick="savePig('+(p?p.id:"undefined")+','+(p?p._row:"undefined")+')">'+(p?"Update Pig":"Add Pig")+'</button>'
+    +'</div>';
+  openModal();
+}
+
+function savePig(id,rowNum){
+  var admin=requireAdmin(); if(!admin)return;
+  var row={tag:document.getElementById("f-tag").value.trim(),name:document.getElementById("f-name").value.trim(),dob:document.getElementById("f-dob").value,stage:document.getElementById("f-stage").value,gender:document.getElementById("f-gender").value,mother:document.getElementById("f-mother").value.trim(),father:document.getElementById("f-father").value.trim(),notes:document.getElementById("f-notes").value.trim()};
+  if(!row.tag){toast("Tag/ID required!","error");return;}
+  closeModal();
+  var isEdit=id!==undefined&&!isNaN(Number(id));
+  if(isEdit){row._row=rowNum;DB.pigs=DB.pigs.map(function(p){return p.id===id?Object.assign({},p,row):p;});}
+  else{DB.pigs.push(Object.assign({id:DB.pigs.length,_row:DB.pigs.length+2},row));}
+  setBalance();renderPigs();
+  api(isEdit?"updateRow":"addRow","pigs",row).then(function(res){
+    if(res&&res.success){
+      toast("✅ Pig saved!");
+      auditLog(isEdit?"Edited Pig":"Added Pig","Tag: "+row.tag+" | Stage: "+row.stage+" | Admin: "+admin);
+      loadAll();
+    } else {toast("❌ "+(res?res.error:"Unknown"),"error");}
+  }).catch(function(e){toast("⚠ Network error","error");console.error(e);});
+}
+
+function deletePig(id){
+  var admin=requireAdmin(); if(!admin)return;
+  var p=DB.pigs.find(function(x){return x.id===id;});
+  if(!confirm("Delete pig "+(p?p.tag:"")+"?"))return;
+  DB.pigs=DB.pigs.filter(function(x){return x.id!==id;});
+  setBalance();renderPigs();
+  api("deleteRow","pigs",{id:id}).then(function(res){
+    if(res&&res.success){toast("✅ Pig deleted.");auditLog("Deleted Pig","Tag: "+(p?p.tag:"?")+" | Admin: "+admin);loadAll();}
+    else{toast("❌ "+(res?res.error:"Unknown"),"error");}
+  });
+}
+
+// ════════════════════════════════════════════════════════════
+// FUNDS
+// ════════════════════════════════════════════════════════════
+function renderFunds() {
+  var tF=DB.funds.reduce(function(s,f){return s+Number(f.amount||0);},0);
+  var tE=DB.expenses.reduce(function(s,e){return s+Number(e.amount||0);},0);
+  var bal=tF-tE;
+  var sorted=DB.funds.slice().sort(function(a,b){return String(a.date)>String(b.date)?1:-1;});
+  var run=0;
+  sorted=sorted.map(function(f){run+=Number(f.amount||0);return Object.assign({},f,{runBal:run});});
+  sorted.reverse();
+  var rows=sorted.length===0?'<tr><td colspan="6" style="padding:30px;text-align:center;color:#bbb">No funds yet.</td></tr>'
+    :sorted.map(function(f){
+      var highlight=isToday(f.date)?' style="background:#f0fdf4"':'';
+      return '<tr'+highlight+'>'
+        +'<td style="white-space:nowrap">'+esc(f.date||"")+(isToday(f.date)?' <span style="background:#1a3d2b;color:#fff;border-radius:4px;padding:1px 6px;font-size:10px;font-weight:700">TODAY</span>':'')+'</td>'
+        +'<td style="font-weight:600">'+esc(f.source||"")+'</td>'
+        +'<td style="font-weight:700;color:#3b82f6">'+fmt(f.amount)+'</td>'
+        +'<td style="color:#888">'+esc(f.notes||"—")+'</td>'
+        +'<td style="font-weight:800;color:'+(f.runBal>=0?"#1a3d2b":"#ef4444")+'">'+fmt(f.runBal)+'</td>'
+        +'<td><div class="td-actions">'
+        +'<button class="btn btn-blue btn-sm" onclick="openFundModal('+f.id+')">✏️ Edit</button>'
+        +'<button class="btn btn-red btn-sm" onclick="deleteFund('+f.id+')">🗑️ Del</button>'
+        +'</div></td></tr>';
+    }).join("");
+  document.getElementById("pane-funds").innerHTML=
+    '<div class="stat-grid">'
+    +'<div class="stat-card" style="border-left-color:#3b82f6"><div class="stat-label">Total Funds Added</div><div class="stat-value">'+fmt(tF)+'</div></div>'
+    +'<div class="stat-card" style="border-left-color:'+(bal>=0?"#1a3d2b":"#ef4444")+'"><div class="stat-label">Available Balance</div><div class="stat-value" style="color:'+(bal>=0?"#1a3d2b":"#ef4444")+'">'+fmt(bal)+'</div></div>'
+    +'</div>'
+    +'<div class="toolbar"><div></div><button class="btn btn-green" onclick="openFundModal()">+ Add Funds</button></div>'
+    +'<div class="white-card" style="overflow-x:auto;padding:0"><table class="data-table">'
+    +'<thead><tr><th>Date</th><th>Source / Investor</th><th>Amount</th><th>Notes</th><th>Running Balance</th><th>Actions</th></tr></thead>'
+    +'<tbody>'+rows+'</tbody></table></div>';
+}
+
+function openFundModal(id){
+  var f=id!==undefined?DB.funds.find(function(x){return x.id===id;}):null;
+  document.getElementById("modal-title").textContent=f?"Edit Fund":"Add Funds";
+  document.getElementById("modal-body").innerHTML=
+    adminField()
+    +'<div class="field"><label>Date</label><input type="date" id="f-date" value="'+(f?f.date:today())+'"/></div>'
+    +'<div class="field"><label>Amount (₱) *</label><input type="number" id="f-amount" value="'+esc(f?f.amount:"")+'"/></div>'
+    +'<div class="field"><label>Source / Investor *</label>'
+    +'<input id="f-source" list="inv-list" value="'+esc(f?f.source:"")+'" placeholder="e.g. Rannie, Kent, Alex"/>'
+    +'<datalist id="inv-list">'+INVESTORS.map(function(n){return '<option value="'+n+'">';}).join("")+'</datalist></div>'
+    +'<div class="field"><label>Notes</label><input id="f-notes" value="'+esc(f?f.notes:"")+'"/></div>'
+    +'<div class="modal-footer">'
+    +'<button class="btn btn-gray" onclick="closeModal()">Cancel</button>'
+    +'<button class="btn btn-green" onclick="saveFund('+(f?f.id:"undefined")+','+(f?f._row:"undefined")+')">'+(f?"Update":"Add Funds")+'</button>'
+    +'</div>';
+  openModal();
+}
+
+function saveFund(id,rowNum){
+  var admin=requireAdmin(); if(!admin)return;
+  var row={date:document.getElementById("f-date").value,amount:document.getElementById("f-amount").value,source:document.getElementById("f-source").value.trim(),notes:document.getElementById("f-notes").value.trim()};
+  if(!row.amount||!row.source){toast("Amount and source required!","error");return;}
+  closeModal();
+  var isEdit=id!==undefined&&!isNaN(Number(id));
+  if(isEdit){row._row=rowNum;DB.funds=DB.funds.map(function(f){return f.id===id?Object.assign({},f,row):f;});}
+  else{DB.funds.push(Object.assign({id:DB.funds.length,_row:DB.funds.length+2},row));}
+  setBalance();renderFunds();
+  api(isEdit?"updateRow":"addRow","funds",row).then(function(res){
+    if(res&&res.success){
+      toast("✅ Fund saved!");
+      auditLog(isEdit?"Edited Fund":"Added Fund","Source: "+row.source+" | Amount: "+fmt(row.amount)+" | Admin: "+admin);
+      loadAll();
+    } else{toast("❌ "+(res?res.error:"Unknown"),"error");}
+  });
+}
+
+function deleteFund(id){
+  var admin=requireAdmin(); if(!admin)return;
+  var f=DB.funds.find(function(x){return x.id===id;});
+  if(!confirm("Delete this fund entry?"))return;
+  DB.funds=DB.funds.filter(function(x){return x.id!==id;});
+  setBalance();renderFunds();
+  api("deleteRow","funds",{id:id}).then(function(res){
+    if(res&&res.success){toast("✅ Deleted.");auditLog("Deleted Fund","Source: "+(f?f.source:"?")+" | Amount: "+fmt(f?f.amount:0)+" | Admin: "+admin);loadAll();}
+    else{toast("❌ "+(res?res.error:"Unknown"),"error");}
+  });
+}
+
+// ════════════════════════════════════════════════════════════
+// EXPENSES — category filter FULLY FIXED with normStr()
+// ════════════════════════════════════════════════════════════
+function renderExpenses() {
+  var catFilter=document.getElementById("exp-cat")?document.getElementById("exp-cat").value:"All";
+  var sorted=DB.expenses.slice().sort(function(a,b){return String(b.date)>String(a.date)?1:-1;});
+
+  // ── THE FIX: normalize both sides before comparing ─────────
+  // This handles &amp; entities, extra spaces, case differences
+  var filtered=catFilter==="All"?sorted:sorted.filter(function(e){
+    return normStr(getCat(e))===normStr(catFilter);
+  });
+
+  var total=filtered.reduce(function(s,e){return s+Number(e.amount||0);},0);
+  var catOpts='<option value="All">All Categories</option>'
+    +CATEGORIES.map(function(c){
+      // Use normStr to match selected state correctly too
+      var sel=normStr(catFilter)===normStr(c)?" selected":"";
+      return '<option value="'+esc(c)+'"'+sel+'>'+esc(c)+'</option>';
+    }).join("");
+
+  var rows=filtered.length===0
+    ?'<tr><td colspan="7" style="padding:30px;text-align:center;color:#bbb">No expenses in this category.</td></tr>'
+    :filtered.map(function(e){
+      var by=e.recorded_by||e.recordedBy||"";
+      var catVal=getCat(e);
+      var highlight=isToday(e.date)?' style="background:#fff9f0"':'';
+      var todayBadge=isToday(e.date)?'<span style="background:#f59e0b;color:#fff;border-radius:4px;padding:1px 6px;font-size:10px;font-weight:700;margin-left:4px">TODAY</span>':'';
+      return '<tr'+highlight+'>'
+        +'<td style="white-space:nowrap">'+esc(e.date||"")+todayBadge+'</td>'
+        +'<td><span class="cat-badge">'+esc(catVal)+'</span></td>'
+        +'<td style="font-weight:600">'+esc(e.description||"")+'</td>'
+        +'<td style="font-weight:800;color:#ef4444;white-space:nowrap">'+fmt(e.amount)+'</td>'
+        +'<td style="color:#888">'+esc(by)+'</td>'
+        +'<td><div class="td-actions">'
+        +'<button class="btn btn-blue btn-sm" onclick="openExpModal('+e.id+')">✏️ Edit</button>'
+        +'<button class="btn btn-red btn-sm" onclick="deleteExp('+e.id+')">🗑️ Del</button>'
+        +'</div></td></tr>';
+    }).join("");
+
+  document.getElementById("pane-expenses").innerHTML=
+    '<div class="toolbar"><div class="toolbar-left">'
+    +'<select id="exp-cat" class="btn btn-gray" onchange="renderExpenses()" style="padding:10px 14px">'+catOpts+'</select>'
+    +'<span style="font-size:13px;font-weight:700;color:#444">'+filtered.length+' entries • Total: <span style="color:#ef4444">'+fmt(total)+'</span></span>'
+    +'</div>'
+    +'<button class="btn btn-green" onclick="openExpModal()">+ Add Expense</button></div>'
+    +'<div class="white-card" style="overflow-x:auto;padding:0"><table class="data-table">'
+    +'<thead><tr><th>Date</th><th>Category</th><th>Description</th><th>Amount</th><th>By</th><th>Actions</th></tr></thead>'
+    +'<tbody>'+rows+'</tbody></table></div>';
+}
+
+function openExpModal(id){
+  var e=id!==undefined?DB.expenses.find(function(x){return x.id===id;}):null;
+  var eCat=e?getCat(e):"";
+  var eBy=e?(e.recorded_by||e.recordedBy||ADMINS[0]):ADMINS[0];
+  // ── Use normStr for dropdown pre-select too ────────────────
+  var catOpts=CATEGORIES.map(function(c){
+    var sel=normStr(eCat)===normStr(c)?" selected":"";
+    return '<option value="'+esc(c)+'"'+sel+'>'+esc(c)+'</option>';
+  }).join("");
+  var byOpts=ADMINS.map(function(m){return '<option'+(eBy===m?" selected":"")+'>'+m+'</option>';}).join("");
+  document.getElementById("modal-title").textContent=e?"Edit Expense":"Add Expense";
+  document.getElementById("modal-body").innerHTML=
+    adminField()
+    +'<div class="field-row">'
+    +'<div class="field"><label>Date</label><input type="date" id="f-date" value="'+(e?e.date:today())+'"/></div>'
+    +'<div class="field"><label>Category</label><select id="f-cat">'+catOpts+'</select></div></div>'
+    +'<div class="field"><label>Description *</label><input id="f-desc" value="'+esc(e?e.description:"")+'"/></div>'
+    +'<div class="field"><label>Amount (₱) *</label><input type="number" id="f-amount" value="'+esc(e?e.amount:"")+'"/></div>'
+    +'<div class="field"><label>Recorded By</label><select id="f-by">'+byOpts+'</select></div>'
+    +'<div class="field"><label>Notes</label><input id="f-notes" value="'+esc(e?e.notes:"")+'"/></div>'
+    +'<div class="modal-footer">'
+    +'<button class="btn btn-gray" onclick="closeModal()">Cancel</button>'
+    +'<button class="btn btn-green" onclick="saveExp('+(e?e.id:"undefined")+','+(e?e._row:"undefined")+')">'+(e?"Save Changes":"Add Expense")+'</button>'
+    +'</div>';
+  openModal();
+}
+
+function saveExp(id,rowNum){
+  var admin=requireAdmin(); if(!admin)return;
+  var row={date:document.getElementById("f-date").value,category:document.getElementById("f-cat").value,description:document.getElementById("f-desc").value.trim(),amount:document.getElementById("f-amount").value,recorded_by:document.getElementById("f-by").value,notes:document.getElementById("f-notes").value.trim()};
+  if(!row.description||!row.amount){toast("Description and amount required!","error");return;}
+  closeModal();
+  var isEdit=id!==undefined&&!isNaN(Number(id));
+  if(isEdit){row._row=rowNum;DB.expenses=DB.expenses.map(function(e){return e.id===id?Object.assign({},e,row):e;});}
+  else{DB.expenses.push(Object.assign({id:DB.expenses.length,_row:DB.expenses.length+2},row));}
+  setBalance();renderExpenses();
+  api(isEdit?"updateRow":"addRow","expenses",row).then(function(res){
+    if(res&&res.success){
+      toast("✅ Expense saved!");
+      auditLog(isEdit?"Edited Expense":"Added Expense",row.description+" | Cat: "+row.category+" | "+fmt(row.amount)+" | Admin: "+admin);
+      loadAll();
+    } else{toast("❌ "+(res?res.error:"Unknown"),"error");}
+  });
+}
+
+function deleteExp(id){
+  var admin=requireAdmin(); if(!admin)return;
+  var e=DB.expenses.find(function(x){return x.id===id;});
+  if(!confirm("Delete: "+(e?e.description:"this expense")+"?"))return;
+  DB.expenses=DB.expenses.filter(function(x){return x.id!==id;});
+  setBalance();renderExpenses();
+  api("deleteRow","expenses",{id:id}).then(function(res){
+    if(res&&res.success){toast("✅ Deleted.");auditLog("Deleted Expense",(e?e.description:"?")+" | "+fmt(e?e.amount:0)+" | Admin: "+admin);loadAll();}
+    else{toast("❌ "+(res?res.error:"Unknown"),"error");}
+  });
+}
+
+// ════════════════════════════════════════════════════════════
+// SALES
+// ════════════════════════════════════════════════════════════
+function renderSales(){
+  var sorted=DB.sales.slice().sort(function(a,b){return String(b.date)>String(a.date)?1:-1;});
+  var tR=sorted.reduce(function(s,r){return s+Number(r.totalprice||0);},0);
+  var tW=sorted.reduce(function(s,r){return s+Number(r.weight||0);},0);
+  var rows=sorted.length===0?'<tr><td colspan="7" style="padding:30px;text-align:center;color:#bbb">No sales yet.</td></tr>'
+    :sorted.map(function(s){
+      var highlight=isToday(s.date)?' style="background:#f0fdf4"':'';
+      return '<tr'+highlight+'>'
+        +'<td style="white-space:nowrap">'+esc(s.date||"")+(isToday(s.date)?' <span style="background:#1a3d2b;color:#fff;border-radius:4px;padding:1px 6px;font-size:10px;font-weight:700">TODAY</span>':'')+'</td>'
+        +'<td style="font-weight:700">'+esc(s.tag||"—")+'</td>'
+        +'<td>'+esc(s.weight||"")+'kg</td>'
+        +'<td>'+fmt(s.priceperkg)+'/kg</td>'
+        +'<td style="font-weight:800;color:#1a3d2b">'+fmt(s.totalprice)+'</td>'
+        +'<td style="color:#666">'+esc(s.buyer||"—")+'</td>'
+        +'<td><div class="td-actions">'
+        +'<button class="btn btn-blue btn-sm" onclick="openSaleModal('+s.id+')">✏️ Edit</button>'
+        +'<button class="btn btn-red btn-sm" onclick="deleteSale('+s.id+')">🗑️ Del</button>'
+        +'</div></td></tr>';
+    }).join("");
+  document.getElementById("pane-sales").innerHTML=
+    '<div class="stat-grid">'
+    +'<div class="stat-card" style="border-left-color:#8b5cf6"><div class="stat-label">Total Revenue</div><div class="stat-value">'+fmt(tR)+'</div></div>'
+    +'<div class="stat-card" style="border-left-color:#14b8a6"><div class="stat-label">Total Weight Sold</div><div class="stat-value">'+tW.toFixed(1)+' kg</div></div>'
+    +'<div class="stat-card" style="border-left-color:#f59e0b"><div class="stat-label">Pigs Sold</div><div class="stat-value">'+sorted.length+'</div></div>'
+    +'</div>'
+    +'<div class="toolbar"><div></div><button class="btn btn-green" onclick="openSaleModal()">+ Record Sale</button></div>'
+    +'<div class="white-card" style="overflow-x:auto;padding:0"><table class="data-table">'
+    +'<thead><tr><th>Date</th><th>Pig Tag</th><th>Weight</th><th>Price/kg</th><th>Total Price</th><th>Buyer</th><th>Actions</th></tr></thead>'
+    +'<tbody>'+rows+'</tbody></table></div>';
+}
+
+function openSaleModal(id){
+  var s=id!==undefined?DB.sales.find(function(x){return x.id===id;}):null;
+  document.getElementById("modal-title").textContent=s?"Edit Sale":"Record Sale";
+  document.getElementById("modal-body").innerHTML=
+    adminField()
+    +'<div class="field"><label>Date</label><input type="date" id="f-date" value="'+(s?s.date:today())+'"/></div>'
+    +'<div class="field"><label>Pig Tag</label><input id="f-tag" list="pig-tag-list" value="'+esc(s?s.tag:"")+'"/>'
+    +'<datalist id="pig-tag-list">'+DB.pigs.map(function(p){return '<option value="'+esc(p.tag)+'">'+(p.name||"")+'</option>';}).join("")+'</datalist></div>'
+    +'<div class="field-row">'
+    +'<div class="field"><label>Weight (kg) *</label><input type="number" id="f-weight" value="'+esc(s?s.weight:"")+'"/></div>'
+    +'<div class="field"><label>Price per kg (₱)</label><input type="number" id="f-ppkg" value="'+esc(s?s.priceperkg:"")+'" oninput="autoCalcSale()"/></div></div>'
+    +'<div class="field"><label>Total Price (₱) *</label><input type="number" id="f-total" value="'+esc(s?s.totalprice:"")+'" style="background:#f0fdf4;font-weight:700"/></div>'
+    +'<div class="field"><label>Buyer</label><input id="f-buyer" value="'+esc(s?s.buyer:"")+'"/></div>'
+    +'<div class="field"><label>Notes</label><input id="f-notes" value="'+esc(s?s.notes:"")+'"/></div>'
+    +'<div class="modal-footer">'
+    +'<button class="btn btn-gray" onclick="closeModal()">Cancel</button>'
+    +'<button class="btn btn-green" onclick="saveSale('+(s?s.id:"undefined")+','+(s?s._row:"undefined")+')">'+(s?"Update Sale":"Record Sale")+'</button>'
+    +'</div>';
+  openModal();
+  document.getElementById("f-weight").addEventListener("input",autoCalcSale);
+}
+
+function autoCalcSale(){
+  var w=Number(document.getElementById("f-weight").value||0);
+  var p=Number(document.getElementById("f-ppkg").value||0);
+  if(w&&p)document.getElementById("f-total").value=(w*p).toFixed(2);
+}
+
+function saveSale(id,rowNum){
+  var admin=requireAdmin(); if(!admin)return;
+  var row={date:document.getElementById("f-date").value,tag:document.getElementById("f-tag").value.trim(),weight:document.getElementById("f-weight").value,priceperkg:document.getElementById("f-ppkg").value,totalprice:document.getElementById("f-total").value,buyer:document.getElementById("f-buyer").value.trim(),notes:document.getElementById("f-notes").value.trim()};
+  if(!row.weight||!row.totalprice){toast("Weight and total price required!","error");return;}
+  closeModal();
+  var isEdit=id!==undefined&&!isNaN(Number(id));
+  if(isEdit){row._row=rowNum;DB.sales=DB.sales.map(function(s){return s.id===id?Object.assign({},s,row):s;});}
+  else{DB.sales.push(Object.assign({id:DB.sales.length,_row:DB.sales.length+2},row));if(row.tag)DB.pigs=DB.pigs.map(function(p){return p.tag===row.tag?Object.assign({},p,{stage:"Sold"}):p;});}
+  setBalance();renderSales();
+  api(isEdit?"updateRow":"addRow","sales",row).then(function(res){
+    if(res&&res.success){
+      toast("✅ Sale recorded!");
+      auditLog(isEdit?"Edited Sale":"Added Sale","Tag: "+row.tag+" | "+fmt(row.totalprice)+" | "+row.weight+"kg | Buyer: "+row.buyer+" | Admin: "+admin);
+      if(!isEdit&&row.tag){var pig=DB.pigs.find(function(p){return p.tag===row.tag;});if(pig)api("updateRow","pigs",{_row:pig._row,tag:pig.tag,stage:"Sold"});}
+      loadAll();
+    } else{toast("❌ "+(res?res.error:"Unknown"),"error");}
+  });
+}
+
+function deleteSale(id){
+  var admin=requireAdmin(); if(!admin)return;
+  var s=DB.sales.find(function(x){return x.id===id;});
+  if(!confirm("Delete sale for Pig #"+(s?s.tag:"")+"?"))return;
+  DB.sales=DB.sales.filter(function(x){return x.id!==id;});
+  setBalance();renderSales();
+  api("deleteRow","sales",{id:id}).then(function(res){
+    if(res&&res.success){toast("✅ Deleted.");auditLog("Deleted Sale","Tag: "+(s?s.tag:"?")+" | "+fmt(s?s.totalprice:0)+" | Admin: "+admin);loadAll();}
+    else{toast("❌ "+(res?res.error:"Unknown"),"error");}
+  });
+}
+
+// ════════════════════════════════════════════════════════════
+// TEAM
+// ════════════════════════════════════════════════════════════
+function renderTeam(){
+  var tF=DB.funds.reduce(function(s,f){return s+Number(f.amount||0);},0);
+  var team=[{name:"Rannie",role:"Admin"},{name:"Kent",role:"Admin"},{name:"Alex",role:"Admin"}];
+  var cards=team.map(function(m){
+    var c=DB.funds.filter(function(f){return f.source===m.name;}).reduce(function(s,f){return s+Number(f.amount||0);},0);
+    var pct=tF>0?(c/tF*100).toFixed(1):0;
+    return '<div class="manager-card" style="border-left:4px solid #1a3d2b">'
+      +'<div style="font-weight:700;font-size:16px;margin-bottom:6px">👤 '+esc(m.name)+'</div>'
+      +'<span class="badge" style="background:#1a3d2b">'+esc(m.role)+'</span>'
+      +(c>0?'<div style="margin-top:12px;font-size:13px;color:#1a3d2b;font-weight:700">Contributed: '+fmt(c)+' ('+pct+'%)</div>'
+        +'<div class="prog-bg"><div class="prog-fill" style="background:#4ade80;width:'+pct+'%"></div></div>':'')
+      +'</div>';
+  }).join("");
+  var tRows=team.map(function(m){
+    var c=DB.funds.filter(function(f){return f.source===m.name;}).reduce(function(s,f){return s+Number(f.amount||0);},0);
+    var p=tF>0?(c/tF*100).toFixed(2):"0.00";
+    return '<tr><td style="font-weight:600">'+esc(m.name)+'</td><td style="color:#1a3d2b;font-weight:700">'+fmt(c)+'</td><td>'+p+'%</td></tr>';
+  }).join("");
+  document.getElementById("pane-team").innerHTML=
+    '<div class="white-card"><h3>👥 Farm Managers & Investors</h3>'
+    +'<p style="font-size:13px;color:#888;margin-bottom:16px">Contributions are calculated from the Funds tab in real-time.</p>'
+    +'<div class="manager-grid">'+cards+'</div></div>'
+    +'<div class="white-card" style="margin-top:16px"><h3>📊 Investment Summary</h3>'
+    +'<table class="data-table"><thead><tr><th>Investor</th><th>Total Contributed</th><th>Share %</th></tr></thead>'
+    +'<tbody>'+tRows
+    +'<tr style="background:#f0fdf4"><td style="font-weight:800">TOTAL</td><td style="font-weight:800;color:#1a3d2b">'+fmt(tF)+'</td><td style="font-weight:800">100%</td></tr>'
+    +'</tbody></table></div>';
+}
+
+// ════════════════════════════════════════════════════════════
+// AUDIT LOG TAB — reads from Google Sheets "Audit Log" sheet
+// ════════════════════════════════════════════════════════════
+function renderAuditLog(){
+  var logs=DB.auditlog.slice().reverse(); // newest first
+  var todayCount=logs.filter(function(l){ return String(l.timestamp||l.TIMESTAMP||"").slice(0,10)===today(); }).length;
+
+  var rows=logs.length===0
+    ?'<tr><td colspan="4" style="padding:40px;text-align:center;color:#bbb">No audit log entries yet. Make some changes to see them here.</td></tr>'
+    :logs.map(function(l){
+      var ts  =l.timestamp||l.TIMESTAMP||l["timestamp"]||"";
+      var adm =l.admin_name||l["admin name"]||l["admin_name"]||l.ADMIN_NAME||"";
+      var act =l.action||l.ACTION||"";
+      var det =l.details||l.DETAILS||"";
+      var tsShort=String(ts).slice(0,10);
+      var isT=tsShort===today();
+      var actClass=act.toLowerCase().indexOf("add")>-1?"audit-add":act.toLowerCase().indexOf("edit")>-1?"audit-edit":"audit-delete";
+      return '<tr class="'+(isT?"audit-today":"")+'">'
+        +'<td style="white-space:nowrap;font-size:12px">'+esc(ts)+(isT?' <span style="background:#f59e0b;color:#fff;border-radius:4px;padding:1px 5px;font-size:10px;font-weight:700">TODAY</span>':'')+'</td>'
+        +'<td style="font-weight:700;color:#1a3d2b">'+esc(adm)+'</td>'
+        +'<td><span class="'+actClass+'">'+esc(act)+'</span></td>'
+        +'<td style="font-size:12px;color:#444">'+esc(det)+'</td>'
+        +'</tr>';
+    }).join("");
+
+  document.getElementById("pane-auditlog").innerHTML=
+    '<div class="stat-grid" style="margin-bottom:16px">'
+    +'<div class="stat-card" style="border-left-color:#f59e0b"><div class="stat-label">Total Log Entries</div><div class="stat-value">'+logs.length+'</div></div>'
+    +'<div class="stat-card" style="border-left-color:#1a3d2b"><div class="stat-label">Changes Today</div><div class="stat-value">'+todayCount+'</div></div>'
+    +'</div>'
+    +'<div class="toolbar">'
+    +'<h3 style="font-size:14px;font-weight:700;color:#444">🔐 Audit Log — Who Changed What & When</h3>'
+    +'<button class="btn btn-gray btn-sm" onclick="loadAuditLog()">🔄 Refresh</button>'
+    +'</div>'
+    +'<div class="white-card" style="overflow-x:auto;padding:0"><table class="data-table">'
+    +'<thead><tr><th>Timestamp</th><th>Admin</th><th>Action</th><th>Details</th></tr></thead>'
+    +'<tbody>'+rows+'</tbody></table></div>';
+}
+
+// ════════════════════════════════════════════════════════════
+// ADMIN FIELD helper — shown at top of every modal
+// ════════════════════════════════════════════════════════════
+function adminField(){
+  var a=getAdmin();
+  return '<div class="admin-field">'
+    +'<div style="font-size:11px;font-weight:700;color:#1a3d2b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">🔐 Admin Authorization</div>'
+    +(a
+      ?'<div style="font-size:13px;font-weight:700;color:#1a3d2b">✅ Logged in as: '+esc(a)+'</div>'
+       +'<div style="font-size:11px;color:#888;margin-top:2px">This action will be recorded in the Audit Log.</div>'
+      :'<div style="font-size:13px;color:#b45309;font-weight:700">⚠ No admin selected! Close this form and select an admin from the top bar first.</div>'
+    )
+    +'</div>';
+}
+
+// ════════════════════════════════════════════════════════════
+// MODAL
+// ════════════════════════════════════════════════════════════
+function openModal(){ document.getElementById("modal").classList.add("open"); }
+function closeModal(){ document.getElementById("modal").classList.remove("open"); }
+document.getElementById("modal").addEventListener("click",function(e){ if(e.target===this)closeModal(); });
+
+// ════════════════════════════════════════════════════════════
+// AUTO-REFRESH every 30 seconds
+// ════════════════════════════════════════════════════════════
+setInterval(loadAll, 30000);
+
+// ════════════════════════════════════════════════════════════
+// START
+// ════════════════════════════════════════════════════════════
+loadAll();
+</script>
+</body>
+</html>

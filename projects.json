@@ -1,0 +1,400 @@
+{
+  "owner": {
+    "name": "DEYSHU",
+    "title": "Independent Software Developer",
+    "brand": "Deyshu Services",
+    "tagline": "I build hybrid systems that run real operations — cloud, native, and self-hosted, stitched into one.",
+    "location": "Taiwan",
+    "about": [
+      "I am an independent software developer focused on building practical, reliable software systems for businesses and organizations. My work spans business management platforms, database infrastructure, desktop applications and intelligent automation.",
+      "I enjoy solving real operational problems by combining the right technologies into systems that are maintainable, secure and designed around the people who use them — approaching every project with a focus on understanding requirements, thoughtful architecture, quality implementation and long-term usability.",
+      "I am a student in Taiwan and I learn by building: the systems in this portfolio are real projects I have shipped end to end, independently, with AI as a co-pilot. I am still early in my journey, open to freelance work, and growing toward being a well-rounded full-stack and infrastructure developer.",
+      "Outside of code, I serve at my church, organising the Bible-verse display during services."
+    ],
+    "contact": [
+      {
+        "label": "Email",
+        "value": "deyshuhub@gmail.com",
+        "href": "mailto:deyshuhub@gmail.com"
+      },
+      {
+        "label": "Website",
+        "value": "deyshuservices.site",
+        "href": ""
+      },
+      {
+        "label": "Instagram",
+        "value": "@dey_shu",
+        "href": "https://www.instagram.com/dey_shu"
+      },
+      {
+        "label": "Telegram",
+        "value": "@deyshuhub",
+        "href": "https://t.me/deyshuhub"
+      },
+      {
+        "label": "LINE",
+        "value": "Add on LINE",
+        "href": "https://line.me/ti/p/sdFnGPeHfw"
+      },
+      {
+        "label": "Facebook",
+        "value": "Facebook",
+        "href": "https://www.facebook.com/share/1EXriuE2cj/"
+      },
+      {
+        "label": "Phone",
+        "value": "+886 900 538 746",
+        "href": "tel:+886900538746"
+      }
+    ],
+    "realName": "Rannie Pono Zoilo",
+    "chineseName": "曾國祥",
+    "hireEmail": "deyshuhub@gmail.com",
+    "services": [
+      {
+        "icon": "⌘",
+        "tag": "DEYSHU Systems",
+        "title": "Business Management Systems",
+        "text": "Custom business software for real daily operations.",
+        "bullets": [
+          "Inventory management",
+          "POS systems",
+          "Employee management",
+          "Financial reporting",
+          "Customer management"
+        ],
+        "cta": true
+      },
+      {
+        "icon": "🗄️",
+        "tag": "DEYSHU Infrastructure",
+        "title": "Database & Infrastructure",
+        "text": "Data engineering, integration and automation.",
+        "bullets": [
+          "PostgreSQL database design",
+          "Database migration",
+          "API integration",
+          "Cloud synchronization",
+          "Workflow automation"
+        ],
+        "cta": true
+      },
+      {
+        "icon": "🖥️",
+        "tag": "DEYSHU Applications",
+        "title": "Desktop & AI Applications",
+        "text": "Custom software products and tools.",
+        "bullets": [
+          "macOS applications",
+          "Windows desktop applications",
+          "AI-powered workflows",
+          "Offline-first applications",
+          "Productivity software"
+        ],
+        "cta": true
+      }
+    ]
+  },
+  "stats": [
+    {
+      "value": "5",
+      "label": "Projects built end to end"
+    },
+    {
+      "value": "Live",
+      "label": "In production — church network & farm hub"
+    },
+    {
+      "value": "Hybrid",
+      "label": "Cloud · self-hosted · native · on-device AI"
+    },
+    {
+      "value": "Sheets ↔ Postgres",
+      "label": "Live-synced data backbone"
+    },
+    {
+      "value": "13",
+      "label": "Core technologies"
+    }
+  ],
+  "techStack": [
+    "Google Apps Script",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Swift",
+    "Rust",
+    "Tauri",
+    "SQLite",
+    "PostgreSQL",
+    "Supabase",
+    "Python",
+    "Docker",
+    "Cloudflare"
+  ],
+  "projects": [
+    {
+      "id": "jil-church-system",
+      "name": "JIL Church System",
+      "tagline": "Hybrid multi-tenant church platform, live in production",
+      "accent": "#f59e0b",
+      "featured": true,
+      "status": "Live in production",
+      "role": "Sole designer & developer",
+      "description": [
+        "The flagship. A multi-tenant church management platform for the Jesus Is Lord church network, built on Google Apps Script and now backed by a hybrid database — Google Sheets and a self-hosted PostgreSQL store running side by side, kept in live sync.",
+        "It runs on a four-tier architecture — Master Dashboard, Regional, Church Template, and Church — so every congregation gets its own secure engine while the network sees across all of them. One codebase serves every church, routed by tenant.",
+        "People sign in once with their Google identity and see only the tabs their role allows, guarded server-side. Members register and check in by QR, attendance rolls up across regions, and it's engineered to scale toward thousands of churches."
+      ],
+      "tech": [
+        "Google Apps Script",
+        "JavaScript",
+        "Google Sheets",
+        "PostgreSQL",
+        "QR check-in",
+        "HTML / CSS"
+      ],
+      "highlights": [
+        "Hybrid data backbone — Google Sheets ↔ self-hosted Postgres, kept in live sync",
+        "Four-tier design: Master Dashboard → Regional → Church Template → Church",
+        "Google-identity sign-in with many server-side permission guards",
+        "Role-filtered dashboards — sign in once, see only your role's tabs",
+        "QR registration and door check-in on any phone",
+        "Cross-church attendance across regions, analytics, automated email invites"
+      ],
+      "links": [],
+      "images": [
+        {
+          "src": "assets/jil-church-system/admin-overview.jpg",
+          "frame": "browser",
+          "alt": "JIL admin dashboard showing attendance and membership totals",
+          "caption": "Church admin dashboard — daily totals, records and events"
+        },
+        {
+          "src": "assets/jil-church-system/mis-executive-overview.jpg",
+          "frame": "browser",
+          "alt": "JIL management information system executive overview with KPI tiles",
+          "caption": "MIS executive overview — role-filtered, one sign-in"
+        },
+        {
+          "src": "assets/jil-church-system/master-kpi-overview.jpg",
+          "frame": "browser",
+          "alt": "JIL Master portal KPI overview across all regions",
+          "caption": "Master portal — network-wide KPIs across every region"
+        },
+        {
+          "src": "assets/jil-church-system/mis-home.png",
+          "frame": "browser",
+          "alt": "JIL MIS home dashboard",
+          "caption": "MIS home — the management view"
+        },
+        {
+          "src": "assets/jil-church-system/mis-search.png",
+          "frame": "browser",
+          "alt": "JIL cross-church member search",
+          "caption": "Cross-church member search"
+        },
+        {
+          "src": "assets/jil-church-system/kiosk-firsttimer.png",
+          "frame": "phone",
+          "alt": "JIL check-in kiosk, First Timer Registration highlighted",
+          "caption": "Check-in kiosk — attendee, first-timer or QR scan"
+        },
+        {
+          "src": "assets/jil-church-system/welcome-qr-card.png",
+          "frame": "phone",
+          "alt": "JIL welcome QR identity card after check-in",
+          "caption": "Personal QR identity card, issued on check-in"
+        }
+      ],
+      "logo": "assets/jil-church-system/jil-realogo.png",
+      "caseStudy": {
+        "problem": "A growing church network tracked attendance and membership by hand, across scattered spreadsheets — no shared view across congregations, and data was easy to lose or duplicate.",
+        "solution": "I built a multi-tenant platform on Google Apps Script with a four-tier design (Master Dashboard → Regional → Church Template → Church), Google-identity sign-in with server-side permission guards, QR registration and check-in, and a hybrid Google Sheets ↔ self-hosted PostgreSQL backbone kept in live sync.",
+        "results": "One codebase now runs every church, with role-filtered dashboards, cross-church attendance roll-ups and automated invites — live in production and engineered to scale toward thousands of churches."
+      },
+      "demo": true
+    },
+    {
+      "id": "jil-nexus",
+      "name": "JIL NEXUS",
+      "tagline": "The self-hosted database backbone — the hybrid half",
+      "accent": "#ef5a3a",
+      "featured": false,
+      "status": "Built & verified, staged rollout",
+      "role": "Architect & developer",
+      "description": [
+        "NEXUS is the self-owned database I built to sit underneath the church system — a self-hosted Supabase (PostgreSQL) stack running in Docker on my own machine, designed to minimise recurring cloud costs (hardware, power and internet still apply).",
+        "The point is the hybrid: the live Google Sheets system and NEXUS run side by side for safety, data is copied across and verified by matching counts, and new registrations flow Sheets → NEXUS automatically over a Cloudflare tunnel. It's the backbone designed to carry the system toward an architectural target of ~1,000,000 records across thousands of churches — a design goal, not yet load-tested."
+      ],
+      "tech": [
+        "PostgreSQL",
+        "Supabase",
+        "Docker",
+        "Cloudflare Tunnel",
+        "Google Apps Script"
+      ],
+      "highlights": [
+        "Self-hosted Supabase / PostgreSQL in Docker — designed to cut recurring cloud costs",
+        "Runs in parallel with Google Sheets for safety during migration",
+        "Live auto-sync: new registrations flow Sheets → Postgres over a Cloudflare tunnel",
+        "Count-matched migration across every church for data integrity",
+        "Architectural target: ~1,000,000 records across thousands of churches (design goal, not yet load-tested)"
+      ],
+      "links": [],
+      "images": [
+        {
+          "src": "assets/jil-nexus/nexus-studio.jpg",
+          "frame": "browser",
+          "alt": "Supabase Studio dashboard for the self-hosted JIL NEXUS project",
+          "caption": "Supabase Studio — the self-hosted JIL NEXUS database, live on my machine"
+        }
+      ],
+      "logo": "assets/jil-church-system/jil-realogo.png",
+      "demo": true
+    },
+    {
+      "id": "ark-business-hub",
+      "name": "ARK | Business Hub",
+      "tagline": "A pig-farm POS & management system",
+      "accent": "#e0b341",
+      "featured": false,
+      "status": "Built",
+      "role": "Designer & developer",
+      "description": [
+        "ARK is a complete business hub and point-of-sale for a pig farm, built as a Google Apps Script web app on a Google Sheets backend.",
+        "It runs the whole operation from one dashboard: tracking pigs and their weights, recording sales, logging expenses, and managing funds and investor contributions — with a monthly summary, an expense breakdown, an investment summary, and a full audit log of who changed what and when. Access is split across farm managers and investors by role."
+      ],
+      "tech": [
+        "Google Apps Script",
+        "JavaScript",
+        "Google Sheets",
+        "HTML / CSS"
+      ],
+      "highlights": [
+        "Dashboard, Pigs, Funds, Expenses, Sales, Team and Audit-Log tabs",
+        "Pig inventory with weight tracking and sales recording (POS)",
+        "Expense breakdown and monthly summaries",
+        "Investor contributions and investment summary",
+        "Role-based access for managers and investors",
+        "Audit log — who changed what and when"
+      ],
+      "links": [],
+      "images": [
+        {
+          "src": "assets/ark-business-hub/ark-dashboard.jpg",
+          "frame": "browser",
+          "alt": "ARK Business Hub dashboard showing pig-farm funds, expenses, sales and monthly summary",
+          "caption": "ARK dashboard — funds, expenses, sales & monthly summary (demo data)"
+        }
+      ],
+      "caseStudy": {
+        "problem": "A pig farm ran sales, expenses, livestock and investor funds across notebooks and loose spreadsheets — with no clear view of profit, and no record of who changed what.",
+        "solution": "I built a complete POS and management hub on Google Apps Script and Google Sheets — pig inventory with weight tracking, sales, expense breakdowns, investor contributions, monthly summaries and a full audit log, all split by role.",
+        "results": "The whole operation now runs from one dashboard, with clear monthly summaries and a full audit trail — managers and investors each see exactly what they need.",
+        "beforeAfter": [
+          [
+            "Manual sales recording",
+            "Centralised sales records"
+          ],
+          [
+            "Separate expense notebooks",
+            "Consolidated expense reports"
+          ],
+          [
+            "Manual livestock tracking",
+            "Digital inventory with weights"
+          ],
+          [
+            "No change history",
+            "Full audit trail of edits"
+          ]
+        ]
+      },
+      "demo": true
+    },
+    {
+      "id": "church-presentation-studio",
+      "name": "Church Presentation Studio",
+      "tagline": "Desktop app that hears Scripture and shows it live",
+      "accent": "#f6a23c",
+      "featured": false,
+      "status": "Temporary system · connects into JIL",
+      "role": "Designer & developer",
+      "description": [
+        "A cross-platform desktop presentation app for church services, built with Tauri 2, React/TypeScript and a Rust core over SQLite.",
+        "It imports and edits PowerPoint, renders native Scripture slides, and — the standout — detects Bible references from the pastor's microphone in real time and puts the verse on screen, with dual-screen HDMI output. It's designed to plug into the JIL Church System as an added feature of the same hybrid ecosystem."
+      ],
+      "tech": [
+        "Tauri 2",
+        "Rust",
+        "React",
+        "TypeScript",
+        "SQLite"
+      ],
+      "highlights": [
+        "Real-time Bible-reference detection from the pastor's microphone",
+        "Native Scripture slides plus PowerPoint import/edit",
+        "Dual-screen HDMI output for live services",
+        "Rust + SQLite core; cross-platform (Windows & macOS)",
+        "Built to connect into the JIL Church System"
+      ],
+      "links": [],
+      "images": [
+        {
+          "src": "assets/church-presentation-studio/cps-studio.jpg",
+          "frame": "browser",
+          "alt": "Church Presentation Studio detecting a Bible reference from the microphone and showing the verse live",
+          "caption": "Live stage preview — the app hears \"John 3:16\" from the mic and pushes the verse to the projector (design preview; real screenshots coming soon)"
+        }
+      ],
+      "demo": true
+    },
+    {
+      "id": "deyhub-studio",
+      "name": "Deyhub Studio",
+      "tagline": "A native macOS photo editor in Swift",
+      "accent": "#f5871f",
+      "featured": false,
+      "status": "Shippable",
+      "role": "Designer & developer",
+      "description": [
+        "A native macOS photo editor written in Swift — the most shippable consumer product in the set.",
+        "It ships 48 filters, LUT support, AI background removal, and bulk processing, backed by around 390 automated tests."
+      ],
+      "tech": [
+        "Swift",
+        "macOS",
+        "Core Image",
+        "AppKit"
+      ],
+      "highlights": [
+        "Two modes: Photo Studio (advanced editing) and Church Studio (batch workflow)",
+        "Step workflow — pick a folder, apply a look, watermark, export",
+        "48 filters and full LUT support",
+        "AI background removal",
+        "Bulk processing across many photos at once",
+        "~390 automated tests · native Swift / macOS"
+      ],
+      "links": [],
+      "images": [
+        {
+          "src": "assets/deyhub-studio/deyhub-ui.jpg",
+          "frame": "browser",
+          "alt": "Deyhub Studio interface — Church Studio step workflow (Folder, Look, Watermark, Export)",
+          "caption": "Deyhub Studio — the Church Studio batch workflow"
+        },
+        {
+          "src": "assets/deyhub-studio/app-icon.png",
+          "frame": "app",
+          "alt": "Deyhub Studio app icon",
+          "caption": "App icon"
+        }
+      ],
+      "demo": true,
+      "testBadge": "Tested · ~390 automated tests",
+      "requirements": "Native macOS app · built & tested on a Mac Pro (2018, Intel)"
+    }
+  ]
+}

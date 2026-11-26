@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DEYSHU — Independent Software Developer</title>
+  <meta name="description" content="Portfolio of DEYSHU (Deyshu Services) — an independent software developer in Taiwan who builds hybrid cloud, self-hosted and native systems that run real operations." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/brand/deyshu-logo.png" />
+</head>
+<body>
+  <!-- Animated gradient-mesh background (depth layer) -->
+  <div class="mesh" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+    <span class="blob blob-4"></span>
+    <div class="grain"></div>
+  </div>
+
+  <!-- Brand watermark (4D, behind the glass) -->
+  <div class="brand-watermark" aria-hidden="true"></div>
+
+  <!-- Nav -->
+  <header class="nav" id="nav">
+    <a class="nav-brand" href="#top" aria-label="Deyshu Services — home">
+      <img class="nav-logo" src="assets/brand/deyshu-logo.png" alt="Deyshu Services" />
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#how">How I Work</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#security">Security</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#about">About</a>
+      <a href="#contact">Hire me</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero-inner reveal">
+        <p class="availability"><span class="av-dot" aria-hidden="true"></span>Available for freelance work · Remote worldwide</p>
+        <p class="hero-eyebrow">Independent Software Developer · <span id="hero-location">Taiwan</span></p>
+        <h1 class="hero-name" id="hero-name">DEYSHU</h1>
+        <p class="hero-tagline" id="hero-tagline">I build hybrid systems that run real operations — cloud, native, and self-hosted, stitched into one.</p>
+        <pre class="code-line" aria-hidden="true"><span class="c-kw">const</span> <span class="c-var">deyshu</span> = { <span class="c-key">role</span>: <span class="c-str">"hybrid full-stack"</span>, <span class="c-key">open_to</span>: <span class="c-str">"freelance"</span> };</pre>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#projects">See the work</a>
+          <a class="btn btn-ghost" href="#hybrid">The hybrid stack</a>
+          <a class="btn btn-ghost" href="#contact">Hire me</a>
+        </div>
+      </div>
+      <a class="scroll-hint" href="#stats" aria-label="Scroll down"><span></span></a>
+    </section>
+
+    <!-- Stats band -->
+    <section class="stats" id="stats" aria-label="At a glance">
+      <div class="stats-grid reveal" id="stats-grid"><div class="stat"><div class="stat-value">5</div><div class="stat-label">Projects built end to end</div></div><div class="stat"><div class="stat-value">Live</div><div class="stat-label">In production — church network &amp; farm hub</div></div><div class="stat"><div class="stat-value">Hybrid</div><div class="stat-label">Cloud · self-hosted · native · on-device AI</div></div><div class="stat"><div class="stat-value">Sheets ↔ Postgres</div><div class="stat-label">Live-synced data backbone</div></div><div class="stat"><div class="stat-value">13</div><div class="stat-label">Core technologies</div></div></div>
+    </section>
+
+    <!-- Hybrid by design -->
+    <section class="hybrid" id="hybrid">
+      <div class="section-head reveal">
+        <p class="section-kicker">How it all fits together</p>
+        <h2 class="section-title">Hybrid by design</h2>
+        <p class="section-sub">I don't pick one stack and force everything into it. Each job gets the right tool — cloud where it's easy, self-hosted where it must scale, native where it has to feel great, AI on-device where it has to stay free and private — all wired into one system.</p>
+      </div>
+
+      <div class="hybrid-flow reveal" aria-label="Hybrid data flow">
+        <div class="flow-node">
+          <span class="flow-tag">Cloud</span>
+          <strong>Google Sheets</strong>
+          <span class="flow-sub">live, shared, familiar</span>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">⇄ live sync ⇄</div>
+        <div class="flow-node">
+          <span class="flow-tag">Self-hosted</span>
+          <strong>PostgreSQL</strong>
+          <span class="flow-sub">scalable, self-owned, free</span>
+        </div>
+      </div>
+
+      <div class="hybrid-grid reveal">
+        <div class="hybrid-card">
+          <div class="hc-icon">☁️</div>
+          <h3>Cloud</h3>
+          <p>Google Apps Script &amp; Sheets run live church and farm systems with zero servers to babysit.</p>
+          <div class="hc-tags"><span>Apps Script</span><span>Sheets</span></div>
+        </div>
+        <div class="hybrid-card">
+          <div class="hc-icon">🗄️</div>
+          <h3>Self-hosted</h3>
+          <p>A self-hosted Supabase / PostgreSQL backbone in Docker, synced from the cloud over a Cloudflare tunnel — designed to minimise recurring cloud costs.</p>
+          <div class="hc-tags"><span>PostgreSQL</span><span>Docker</span><span>Cloudflare</span></div>
+        </div>
+        <div class="hybrid-card">
+          <div class="hc-icon">🖥️</div>
+          <h3>Native</h3>
+          <p>Swift on macOS and a Tauri + Rust desktop app, for the things that have to feel fast and look sharp.</p>
+          <div class="hc-tags"><span>Swift</span><span>Tauri</span><span>Rust</span></div>
+        </div>
+        <div class="hybrid-card">
+          <div class="hc-icon">🤖</div>
+          <h3>On-device AI</h3>
+          <p>A local Ollama model runs an offline voice assistant on the GPU — free, private, no API keys.</p>
+          <div class="hc-tags"><span>Ollama</span><span>Python</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- System Architecture -->
+    <section class="architecture" id="architecture">
+      <div class="section-head reveal">
+        <p class="section-kicker">How the systems communicate &amp; sync</p>
+        <h2 class="section-title">System Architecture</h2>
+        <p class="section-sub">Two diagrams showing how data moves through my biggest systems — from the person on their phone to the database, and how the cloud and self-hosted halves stay in sync.</p>
+      </div>
+
+      <figure class="arch-card reveal">
+        <figcaption class="arch-title">JIL Church System — request &amp; data flow</figcaption>
+        <svg class="arch-svg" viewBox="0 0 940 360" role="img" aria-label="Data flow: a person signs in with Google identity, a server-side role guard checks permissions, requests route through a four-tier design (Master Dashboard, Regional, Church Template, Church) to role-filtered dashboards, and data is stored in a hybrid layer of Google Sheets and self-hosted PostgreSQL kept in live sync.">
+          <defs>
+            <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#f5871f"/></marker>
+          </defs>
+          <style>
+            .ab{fill:rgba(255,255,255,.04);stroke:rgba(255,255,255,.16);stroke-width:1.5;rx:14}
+            .at{fill:#fbf1e8;font:600 15px ui-sans-serif,system-ui;}
+            .as{fill:#cdb9ab;font:12px ui-sans-serif,system-ui;}
+            .al{fill:#f5a93c;font:700 11px ui-monospace,monospace;letter-spacing:.3px}
+            .aln{stroke:#f5871f;stroke-width:2;fill:none}
+          </style>
+          <!-- row 1 -->
+          <rect class="ab" x="20"  y="40" width="180" height="78" rx="14"/>
+          <text class="at" x="110" y="72" text-anchor="middle">People</text>
+          <text class="as" x="110" y="94" text-anchor="middle">members &amp; staff, any phone</text>
+
+          <rect class="ab" x="250" y="40" width="200" height="78" rx="14"/>
+          <text class="at" x="350" y="72" text-anchor="middle">Google sign-in</text>
+          <text class="as" x="350" y="94" text-anchor="middle">+ server-side role guard</text>
+
+          <rect class="ab" x="500" y="40" width="210" height="78" rx="14"/>
+          <text class="at" x="605" y="72" text-anchor="middle">Four-tier routing</text>
+          <text class="as" x="605" y="94" text-anchor="middle">Master → Regional → Church</text>
+
+          <rect class="ab" x="760" y="40" width="160" height="78" rx="14"/>
+          <text class="at" x="840" y="72" text-anchor="middle">Role-filtered</text>
+          <text class="as" x="840" y="94" text-anchor="middle">dashboards</text>
+
+          <line class="aln" x1="202" y1="79" x2="246" y2="79" marker-end="url(#ah)"/>
+          <line class="aln" x1="452" y1="79" x2="496" y2="79" marker-end="url(#ah)"/>
+          <line class="aln" x1="712" y1="79" x2="756" y2="79" marker-end="url(#ah)"/>
+
+          <!-- QR note -->
+          <text class="al" x="110" y="150" text-anchor="middle">▲ QR registration &amp; check-in</text>
+
+          <!-- down arrow to data layer -->
+          <line class="aln" x1="605" y1="120" x2="605" y2="214" marker-end="url(#ah)"/>
+          <text class="al" x="618" y="175">reads / writes</text>
+
+          <!-- data layer -->
+          <rect class="ab" x="170" y="222" width="600" height="104" rx="16"/>
+          <text class="al" x="470" y="248" text-anchor="middle">HYBRID DATA LAYER · KEPT IN LIVE SYNC</text>
+          <rect x="200" y="262" width="250" height="48" rx="10" fill="rgba(245,135,31,.1)" stroke="rgba(245,135,31,.4)"/>
+          <text class="at" x="325" y="291" text-anchor="middle">Google Sheets (cloud)</text>
+          <rect x="490" y="262" width="250" height="48" rx="10" fill="rgba(224,57,43,.1)" stroke="rgba(224,57,43,.4)"/>
+          <text class="at" x="615" y="291" text-anchor="middle">PostgreSQL (self-hosted)</text>
+          <line class="aln" x1="452" y1="286" x2="488" y2="286" marker-end="url(#ah)"/>
+          <line class="aln" x1="488" y1="300" x2="452" y2="300" marker-end="url(#ah)"/>
+        </svg>
+      </figure>
+
+      <figure class="arch-card reveal">
+        <figcaption class="arch-title">JIL NEXUS — cloud ↔ self-hosted sync</figcaption>
+        <svg class="arch-svg" viewBox="0 0 940 260" role="img" aria-label="Sync flow: new registrations flow from Google Sheets in the cloud, over an encrypted Cloudflare tunnel, into a self-hosted PostgreSQL and Supabase stack running in Docker. The two run in parallel during migration and data is verified by matching record counts.">
+          <defs>
+            <marker id="ah2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#f5871f"/></marker>
+          </defs>
+          <style>
+            .bb{fill:rgba(255,255,255,.04);stroke:rgba(255,255,255,.16);stroke-width:1.5}
+            .bt{fill:#fbf1e8;font:600 15px ui-sans-serif,system-ui}
+            .bs{fill:#cdb9ab;font:12px ui-sans-serif,system-ui}
+            .bl{fill:#f5a93c;font:700 11px ui-monospace,monospace}
+            .bln{stroke:#f5871f;stroke-width:2;fill:none}
+          </style>
+          <rect class="bb" x="20"  y="56" width="220" height="86" rx="14"/>
+          <text class="bt" x="130" y="92" text-anchor="middle">Google Sheets</text>
+          <text class="bs" x="130" y="114" text-anchor="middle">cloud · live, in daily use</text>
+
+          <rect class="bb" x="360" y="56" width="220" height="86" rx="14"/>
+          <text class="bt" x="470" y="92" text-anchor="middle">Cloudflare Tunnel</text>
+          <text class="bs" x="470" y="114" text-anchor="middle">encrypted, no open ports</text>
+
+          <rect class="bb" x="700" y="56" width="220" height="86" rx="14"/>
+          <text class="bt" x="810" y="86" text-anchor="middle">PostgreSQL / Supabase</text>
+          <text class="bs" x="810" y="108" text-anchor="middle">Docker · self-hosted (my Mac)</text>
+
+          <line class="bln" x1="242" y1="99" x2="356" y2="99" marker-end="url(#ah2)"/>
+          <text class="bl" x="299" y="86" text-anchor="middle">new regs, auto</text>
+          <line class="bln" x1="582" y1="99" x2="696" y2="99" marker-end="url(#ah2)"/>
+
+          <path class="bln" d="M810,146 L810,180 L130,180 L130,146" marker-end="url(#ah2)"/>
+          <text class="bl" x="470" y="200" text-anchor="middle">count-matched verification · both run in parallel for safety</text>
+        </svg>
+      </figure>
+    </section>
+
+    <!-- Services (data-driven) -->
+    <section class="services" id="services">
+      <div class="section-head reveal">
+        <p class="section-kicker">What I can build for you</p>
+        <h2 class="section-title">Services</h2>
+        <p class="section-sub">End-to-end software, built and shipped independently — from the database up to the screen your team uses every day.</p>
+      </div>
+      <div id="services-grid" class="services-grid reveal"><article class="service-card"><div class="service-top"><div class="service-icon">⌘</div><span class="service-num">01</span></div><span class="service-tag">DEYSHU Systems</span><h3 class="service-title">Business Management Systems</h3><p class="service-text">Custom business software for real daily operations.</p><ul class="service-list"><li>Inventory management</li><li>POS systems</li><li>Employee management</li><li>Financial reporting</li><li>Customer management</li></ul><a class="service-cta" href="mailto:deyshuhub@gmail.com?subject=Project%20inquiry%3A%20Business%20Management%20Systems">Discuss a project →</a></article><article class="service-card"><div class="service-top"><div class="service-icon">🗄️</div><span class="service-num">02</span></div><span class="service-tag">DEYSHU Infrastructure</span><h3 class="service-title">Database &amp; Infrastructure</h3><p class="service-text">Data engineering, integration and automation.</p><ul class="service-list"><li>PostgreSQL database design</li><li>Database migration</li><li>API integration</li><li>Cloud synchronization</li><li>Workflow automation</li></ul><a class="service-cta" href="mailto:deyshuhub@gmail.com?subject=Project%20inquiry%3A%20Database%20%26%20Infrastructure">Discuss a project →</a></article><article class="service-card"><div class="service-top"><div class="service-icon">🖥️</div><span class="service-num">03</span></div><span class="service-tag">DEYSHU Applications</span><h3 class="service-title">Desktop &amp; AI Applications</h3><p class="service-text">Custom software products and tools.</p><ul class="service-list"><li>macOS applications</li><li>Windows desktop applications</li><li>AI-powered workflows</li><li>Offline-first applications</li><li>Productivity software</li></ul><a class="service-cta" href="mailto:deyshuhub@gmail.com?subject=Project%20inquiry%3A%20Desktop%20%26%20AI%20Applications">Discuss a project →</a></article></div>
+    </section>
+
+    <!-- Projects (data-driven) -->
+    <section class="projects" id="projects">
+      <div class="section-head reveal">
+        <p class="section-kicker">Featured work</p>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-sub">Real systems, most of them in daily use. Tap a screenshot to zoom, or request a personal live demo on any project.</p>
+      </div>
+      <div class="status-legend reveal" aria-label="What the status labels mean">
+        <span class="sl-item"><span class="sl-dot sl-live"></span><b>Live in production</b> — in real, daily use</span>
+        <span class="sl-item"><span class="sl-dot sl-staged"></span><b>Built &amp; verified</b> — working, staged rollout</span>
+        <span class="sl-item"><span class="sl-dot sl-built"></span><b>Built</b> — complete, not yet in daily use</span>
+        <span class="sl-item"><span class="sl-dot sl-dev"></span><b>In development / temporary</b> — work in progress</span>
+      </div>
+      <div id="projects-list" class="projects-list"><article class="project reveal featured" id="project-jil-church-system" style="--p-accent:#f59e0b"><div class="project-grid"><div class="project-body"><div class="project-logo"><img src="assets/jil-church-system/jil-realogo.png" alt="JIL Church System logo" loading="lazy"></div><div class="project-eyebrow"><span class="project-index">01</span><span class="badge badge-featured">★ Flagship</span><span class="badge">Live in production</span></div><h3 class="project-name">JIL Church System</h3><p class="project-tagline">Hybrid multi-tenant church platform, live in production</p><p class="project-role">Sole designer &amp; developer</p><div class="project-desc"><p>The flagship. A multi-tenant church management platform for the Jesus Is Lord church network, built on Google Apps Script and now backed by a hybrid database — Google Sheets and a self-hosted PostgreSQL store running side by side, kept in live sync.</p><p>It runs on a four-tier architecture — Master Dashboard, Regional, Church Template, and Church — so every congregation gets its own secure engine while the network sees across all of them. One codebase serves every church, routed by tenant.</p><p>People sign in once with their Google identity and see only the tabs their role allows, guarded server-side. Members register and check in by QR, attendance rolls up across regions, and it's engineered to scale toward thousands of churches.</p></div><div class="project-tags"><button class="tag" type="button">Google Apps Script</button><button class="tag" type="button">JavaScript</button><button class="tag" type="button">Google Sheets</button><button class="tag" type="button">PostgreSQL</button><button class="tag" type="button">QR check-in</button><button class="tag" type="button">HTML / CSS</button></div><div class="tag-purpose"><span class="tp-hint">Tap a tag to see its job in this project →</span></div><ul class="project-highlights"><li>Hybrid data backbone — Google Sheets ↔ self-hosted Postgres, kept in live sync</li><li>Four-tier design: Master Dashboard → Regional → Church Template → Church</li><li>Google-identity sign-in with many server-side permission guards</li><li>Role-filtered dashboards — sign in once, see only your role's tabs</li><li>QR registration and door check-in on any phone</li><li>Cross-church attendance across regions, analytics, automated email invites</li></ul><div class="project-actions"><a class="btn btn-demo" href="mailto:deyshuhub@gmail.com?subject=Live%20demo%20request%3A%20JIL%20Church%20System">Request a live demo →</a></div></div><div class="project-media"><div class="shots"><div><div class="frame frame-browser" tabindex="0" role="button" aria-label="Open image: JIL admin dashboard showing attendance and membership totals"><div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><img src="assets/jil-church-system/admin-overview.jpg" alt="JIL admin dashboard showing attendance and membership totals" loading="lazy" decoding="async"></div><p class="shot-cap">Church admin dashboard — daily totals, records and events</p></div><div><div class="frame frame-browser" tabindex="0" role="button" aria-label="Open image: JIL management information system executive overview with KPI tiles"><div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><img src="assets/jil-church-system/mis-executive-overview.jpg" alt="JIL management information system executive overview with KPI tiles" loading="lazy" decoding="async"></div><p class="shot-cap">MIS executive overview — role-filtered, one sign-in</p></div><div><div class="frame frame-browser" tabindex="0" role="button" aria-label="Open image: JIL Master portal KPI overview across all regions"><div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><img src="assets/jil-church-system/master-kpi-overview.jpg" alt="JIL Master portal KPI overview across all regions" loading="lazy" decoding="async"></div><p class="shot-cap">Master portal — network-wide KPIs across every region</p></div><div><div class="frame frame-browser" tabindex="0" role="button" aria-label="Open image: JIL MIS home dashboard"><div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><img src="assets/jil-church-system/mis-home.png" alt="JIL MIS home dashboard" loading="lazy" decoding="async"></div><p class="shot-cap">MIS home — the management view</p></div><div><div class="frame frame-browser" tabindex="0" role="button" aria-label="Open image: JIL cross-church member search"><div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><img src="assets/jil-church-system/mis-search.png" alt="JIL cross-church member search" loading="lazy" decoding="async"></div><p class="shot-cap">Cross-church member search</p></div><div><div class="frame frame-phone" tabindex="0" role="button" aria-label="Open image: JIL check-in kiosk, First Timer Registration highlighted"><img src="assets/jil-church-system/kiosk-firsttimer.png" alt="JIL check-in kiosk, First Timer Registration highlighted" loading="lazy" decoding="async"></div><p class="shot-cap">Check-in kiosk — attendee, first-timer or QR scan</p></div><div><div class="frame frame-phone" tabindex="0" role="button" aria-label="Open image: JIL welcome QR identity card after check-in"><img src="assets/jil-church-system/welcome-qr-card.png" alt="JIL welcome QR identity card after check-in" loading="lazy" decoding="async"></div><p class="shot-cap">Personal QR identity card, issued on check-in</p></div></div></div></div></article><article class="project reveal" id="project-jil-nexus" style="--p-accent:#ef5a3a"><div class="project-grid"><div class="project-body"><div class="project-logo"><img src="assets/jil-church-system/jil-realogo.png" alt="JIL NEXUS logo" loading="lazy"></div><div class="project-eyebrow"><span class="project-index">02</span><span class="badge">Built &amp; verified, staged rollout</span></div><h3 class="project-name">JIL NEXUS</h3><p class="project-tagline">The self-hosted database backbone — the hybrid half</p><p class="project-role">Architect &amp; developer</p><div class="project-desc"><p>NEXUS is the self-owned database I built to sit underneath the church system — a self-hosted Supabase (PostgreSQL) stack running in Docker on my own machine, designed to minimise recurring cloud costs (hardware, power and internet still apply).</p><p>The point is the hybrid: the live Google Sheets system and NEXUS run side by side for safety, data is copied across and verified by matching counts, and new registrations flow Sheets → NEXUS automatically over a Cloudflare tunnel. It's the backbone designed to carry the system toward an architectural target of ~1,000,000 records across thousands of churches — a design goal, not yet load-tested.</p></div><div class="project-tags"><button class="tag" type="button">PostgreSQL</button><button class="tag" type="button">Supabase</button><button class="tag" type="button">Docker</button><button class="tag" type="button">Cloudflare Tunnel</button><button class="tag" type="button">Google Apps Script</button></div><div class="tag-purpose"><span class="tp-hint">Tap a tag to see its job in this project →</span></div><ul class="project-highlights"><li>Self-hosted Supabase / PostgreSQL in Docker — designed to cut recurring cloud costs</li><li>Runs in parallel with Google Sheets for safety during migration</li><li>Live auto-sync: new registrations flow Sheets → Postgres over a Cloudflare tunnel</li><li>Count-matched migration across every church for data integrity</li><li>Architectural target: ~1,000,000 records across thousands of churches (design goal, not yet load-tested)</li></ul><div class="project-actions"><a class="btn btn-demo" href="mailto:deyshuhub@gmail.com?subject=Live%20demo%20request%3A%20JIL%20NEXUS">Request a live demo →</a></div></div><div class="project-media"><div class="shots"><div><div class="frame frame-browser" tabindex="0" role="button" aria-label="Open image: Supabase Studio dashboard for the self-hosted JIL NEXUS project"><div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><img src="assets/jil-nexus/nexus-studio.jpg" alt="Supabase Studio dashboard for the self-hosted JIL NEXUS project" loading="lazy" decoding="async"></div><p class="shot-cap">Supabase Studio — the self-hosted JIL NEXUS database, live on my machine</p></div></div></div></div></article><article class="project reveal" id="project-ark-business-hub" style="--p-accent:#e0b341"><div class="project-grid"><div class="project-body"><div class="project-eyebrow"><span class="project-index">03</span><span class="badge">Built</span></div><h3 class="project-name">ARK | Business Hub</h3><p class="project-tagline">A pig-farm POS &amp; management system</p><p class="project-role">Designer &amp; developer</p><div class="project-desc"><p>ARK is a complete business hub and point-of-sale for a pig farm, built as a Google Apps Script web app on a Google Sheets backend.</p><p>It runs the whole operation from one dashboard: tracking pigs and their weights, recording sales, logging expenses, and managing funds and investor contributions — with a monthly summary, an expense breakdown, an investment summary, and a full audit log of who changed what and when. Access is split across farm managers and investors by role.</p></div><div class="project-tags"><button class="tag" type="button">Google Apps Script</button><button class="tag" type="button">JavaScript</button><button class="tag" type="button">Google Sheets</button><button class="tag" type="button">HTML / CSS</button></div><div class="tag-purpose"><span class="tp-hint">Tap a tag to see its job in this project →</span></div><ul class="project-highlights"><li>Dashboard, Pigs, Funds, Expenses, Sales, Team and Audit-Log tabs</li><li>Pig inventory with weight tracking and sales recording (POS)</li><li>Expense breakdown and monthly summaries</li><li>Investor contributions and investment summary</li><li>Role-based access for managers and investors</li><li>Audit log — who changed what and when</li></ul><div class="project-actions"><a class="btn btn-demo" href="mailto:deyshuhub@gmail.com?subject=Live%20demo%20request%3A%20ARK%20%7C%20Business%20Hub">Request a live demo →</a></div></div><div class="project-media"><div class="shots"><div><div class="frame frame-browser" tabindex="0" role="button" aria-label="Open image: ARK Business Hub dashboard showing pig-farm funds, expenses, sales and monthly summary"><div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><img src="assets/ark-business-hub/ark-dashboard.jpg" alt="ARK Business Hub dashboard showing pig-farm funds, expenses, sales and monthly summary" loading="lazy" decoding="async"></div><p class="shot-cap">ARK dashboard — funds, expenses, sales &amp; monthly summary (demo data)</p></div></div></div></div></article><article class="project reveal" id="project-church-presentation-studio" style="--p-accent:#f6a23c"><div class="project-grid"><div class="project-body"><div class="project-eyebrow"><span class="project-index">04</span><span class="badge">Temporary system · connects into JIL</span></div><h3 class="project-name">Church Presentation Studio</h3><p class="project-tagline">Desktop app that hears Scripture and shows it live</p><p class="project-role">Designer &amp; developer</p><div class="project-desc"><p>A cross-platform desktop presentation app for church services, built with Tauri 2, React/TypeScript and a Rust core over SQLite.</p><p>It imports and edits PowerPoint, renders native Scripture slides, and — the standout — detects Bible references from the pastor's microphone in real time and puts the verse on screen, with dual-screen HDMI output. It's designed to plug into the JIL Church System as an added feature of the same hybrid ecosystem.</p></div><div class="project-tags"><button class="tag" type="button">Tauri 2</button><button class="tag" type="button">Rust</button><button class="tag" type="button">React</button><button class="tag" type="button">TypeScript</button><button class="tag" type="button">SQLite</button></div><div class="tag-purpose"><span class="tp-hint">Tap a tag to see its job in this project →</span></div><ul class="project-highlights"><li>Real-time Bible-reference detection from the pastor's microphone</li><li>Native Scripture slides plus PowerPoint import/edit</li><li>Dual-screen HDMI output for live services</li><li>Rust + SQLite core; cross-platform (Windows &amp; macOS)</li><li>Built to connect into the JIL Church System</li></ul><div class="project-actions"><a class="btn btn-demo" href="mailto:deyshuhub@gmail.com?subject=Live%20demo%20request%3A%20Church%20Presentation%20Studio">Request a live demo →</a></div></div><div class="project-media"><div class="shots"><div><div class="frame frame-browser" tabindex="0" role="button" aria-label="Open image: Church Presentation Studio detecting a Bible reference from the microphone and showing the verse live"><div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><img src="assets/church-presentation-studio/cps-studio.jpg" alt="Church Presentation Studio detecting a Bible reference from the microphone and showing the verse live" loading="lazy" decoding="async"></div><p class="shot-cap">Live stage preview — the app hears &quot;John 3:16&quot; from the mic and pushes the verse to the projector (design preview; real screenshots coming soon)</p></div></div></div></div></article><article class="project reveal" id="project-deyhub-studio" style="--p-accent:#f5871f"><div class="project-grid"><div class="project-body"><div class="project-eyebrow"><span class="project-index">05</span><span class="badge">Shippable</span><span class="badge badge-tested">✓ Tested · ~390 automated tests</span></div><h3 class="project-name">Deyhub Studio</h3><p class="project-tagline">A native macOS photo editor in Swift</p><p class="project-role">Designer &amp; developer</p><div class="project-desc"><p>A native macOS photo editor written in Swift — the most shippable consumer product in the set.</p><p>It ships 48 filters, LUT support, AI background removal, and bulk processing, backed by around 390 automated tests.</p></div><div class="project-tags"><button class="tag" type="button">Swift</button><button class="tag" type="button">macOS</button><button class="tag" type="button">Core Image</button><button class="tag" type="button">AppKit</button></div><div class="tag-purpose"><span class="tp-hint">Tap a tag to see its job in this project →</span></div><ul class="project-highlights"><li>Two modes: Photo Studio (advanced editing) and Church Studio (batch workflow)</li><li>Step workflow — pick a folder, apply a look, watermark, export</li><li>48 filters and full LUT support</li><li>AI background removal</li><li>Bulk processing across many photos at once</li><li>~390 automated tests · native Swift / macOS</li></ul><p class="project-req">💻 Native macOS app · built &amp; tested on a Mac Pro (2018, Intel)</p><div class="project-actions"><a class="btn btn-demo" href="mailto:deyshuhub@gmail.com?subject=Live%20demo%20request%3A%20Deyhub%20Studio">Request a live demo →</a></div></div><div class="project-media"><div class="shots"><div><div class="frame frame-browser" tabindex="0" role="button" aria-label="Open image: Deyhub Studio interface — Church Studio step workflow (Folder, Look, Watermark, Export)"><div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><img src="assets/deyhub-studio/deyhub-ui.jpg" alt="Deyhub Studio interface — Church Studio step workflow (Folder, Look, Watermark, Export)" loading="lazy" decoding="async"></div><p class="shot-cap">Deyhub Studio — the Church Studio batch workflow</p></div><div><div class="frame frame-app"><img src="assets/deyhub-studio/app-icon.png" alt="Deyhub Studio app icon" loading="lazy" decoding="async"></div><p class="shot-cap">App icon</p></div></div></div></div></article></div>
+      <!-- States for the control run / empty data -->
+      
+      <div id="cases-list" class="cases-list reveal"><article class="case-card" style="--p-accent:#f59e0b"><div class="case-head"><div class="project-logo case-logo"><img src="assets/jil-church-system/jil-realogo.png" alt="JIL Church System logo" loading="lazy"></div><h3 class="case-name">JIL Church System</h3></div><div class="case-steps"><div class="case-step case-problem"><span class="case-label">The problem</span><p>A growing church network tracked attendance and membership by hand, across scattered spreadsheets — no shared view across congregations, and data was easy to lose or duplicate.</p></div><div class="case-step case-solution"><span class="case-label">My solution</span><p>I built a multi-tenant platform on Google Apps Script with a four-tier design (Master Dashboard → Regional → Church Template → Church), Google-identity sign-in with server-side permission guards, QR registration and check-in, and a hybrid Google Sheets ↔ self-hosted PostgreSQL backbone kept in live sync.</p></div><div class="case-step case-results"><span class="case-label">The results</span><p>One codebase now runs every church, with role-filtered dashboards, cross-church attendance roll-ups and automated invites — live in production and engineered to scale toward thousands of churches.</p></div></div></article><article class="case-card" style="--p-accent:#e0b341"><div class="case-head"><h3 class="case-name">ARK | Business Hub</h3></div><div class="case-steps"><div class="case-step case-problem"><span class="case-label">The problem</span><p>A pig farm ran sales, expenses, livestock and investor funds across notebooks and loose spreadsheets — with no clear view of profit, and no record of who changed what.</p></div><div class="case-step case-solution"><span class="case-label">My solution</span><p>I built a complete POS and management hub on Google Apps Script and Google Sheets — pig inventory with weight tracking, sales, expense breakdowns, investor contributions, monthly summaries and a full audit log, all split by role.</p></div><div class="case-step case-results"><span class="case-label">The results</span><p>The whole operation now runs from one dashboard, with clear monthly summaries and a full audit trail — managers and investors each see exactly what they need.</p></div></div><div class="case-ba"><div class="ba-head"><span class="ba-label ba-before">Before</span><span class="ba-arrow">→</span><span class="ba-label ba-after">After</span><span class="ba-note">illustrative, from the real build</span></div><div class="ba-row"><span class="ba-b">Manual sales recording</span><span class="ba-sep">→</span><span class="ba-a">Centralised sales records</span></div><div class="ba-row"><span class="ba-b">Separate expense notebooks</span><span class="ba-sep">→</span><span class="ba-a">Consolidated expense reports</span></div><div class="ba-row"><span class="ba-b">Manual livestock tracking</span><span class="ba-sep">→</span><span class="ba-a">Digital inventory with weights</span></div><div class="ba-row"><span class="ba-b">No change history</span><span class="ba-sep">→</span><span class="ba-a">Full audit trail of edits</span></div></div></article></div>
+    </section>
+
+    <!-- How I Work -->
+    <section class="howiwork" id="how">
+      <div class="section-head reveal">
+        <p class="section-kicker">A clear, professional process</p>
+        <h2 class="section-title">How I Work</h2>
+        <p class="section-sub">From first conversation to a working system you own — so you always know what happens next.</p>
+      </div>
+      <ol class="how-steps reveal">
+        <li class="how-step"><span class="how-num">01</span><div><h3>Discovery &amp; Consultation</h3><p>Understand your business, requirements, existing workflow and the problems to solve.</p></div></li>
+        <li class="how-step"><span class="how-num">02</span><div><h3>Proposal &amp; Planning</h3><p>Define scope, features, deliverables, an estimated timeline and the project cost.</p></div></li>
+        <li class="how-step"><span class="how-num">03</span><div><h3>Architecture &amp; Design</h3><p>Plan the database, system structure, security and the user experience.</p></div></li>
+        <li class="how-step"><span class="how-num">04</span><div><h3>Development</h3><p>Build the application in agreed milestones, with regular progress updates.</p></div></li>
+        <li class="how-step"><span class="how-num">05</span><div><h3>Testing &amp; Review</h3><p>Test functionality, permissions and data handling against your acceptance criteria.</p></div></li>
+        <li class="how-step"><span class="how-num">06</span><div><h3>Deployment &amp; Handover</h3><p>Deliver the agreed source code, documentation, deployment and training.</p></div></li>
+        <li class="how-step"><span class="how-num">07</span><div><h3>Maintenance</h3><p>Agree post-delivery support, updates and ongoing maintenance separately.</p></div></li>
+      </ol>
+    </section>
+
+    <!-- Tech stack -->
+    <section class="stack" id="stack">
+      <div class="section-head reveal">
+        <p class="section-kicker">Tools of the trade</p>
+        <h2 class="section-title">Tech stack</h2>
+      </div>
+      <div class="stack-cloud reveal" id="stack-cloud"><button class="chip" type="button">Google Apps Script</button><button class="chip" type="button">JavaScript</button><button class="chip" type="button">TypeScript</button><button class="chip" type="button">React</button><button class="chip" type="button">Swift</button><button class="chip" type="button">Rust</button><button class="chip" type="button">Tauri</button><button class="chip" type="button">SQLite</button><button class="chip" type="button">PostgreSQL</button><button class="chip" type="button">Supabase</button><button class="chip" type="button">Python</button><button class="chip" type="button">Docker</button><button class="chip" type="button">Cloudflare</button></div><div class="stack-purpose" id="stack-purpose"><span class="sp-hint">Tap a technology to see how I use it →</span></div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+      <div class="about-inner reveal">
+        <div class="about-text">
+          <p class="section-kicker">The person behind it</p>
+          <h2 class="section-title">About</h2>
+          <div id="about-body" class="about-body"><div class="about-byline"><span class="ab-brand">DEYSHU</span><span class="ab-sep">— Built by</span><span class="ab-real">Rannie Pono Zoilo</span><span class="ab-zh">曾國祥</span></div><p>I am an independent software developer focused on building practical, reliable software systems for businesses and organizations. My work spans business management platforms, database infrastructure, desktop applications and intelligent automation.</p><p>I enjoy solving real operational problems by combining the right technologies into systems that are maintainable, secure and designed around the people who use them — approaching every project with a focus on understanding requirements, thoughtful architecture, quality implementation and long-term usability.</p><p>I am a student in Taiwan and I learn by building: the systems in this portfolio are real projects I have shipped end to end, independently, with AI as a co-pilot. I am still early in my journey, open to freelance work, and growing toward being a well-rounded full-stack and infrastructure developer.</p><p>Outside of code, I serve at my church, organising the Bible-verse display during services.</p></div>
+        </div>
+        <figure class="about-portrait">
+          <img src="assets/brand/deyshu-photo.png" alt="DEYSHU" loading="lazy" />
+          <figcaption>Rannie Pono Zoilo · 曾國祥 · Deyshu Services</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Security & Privacy -->
+    <section class="security" id="security">
+      <div class="section-head reveal">
+        <p class="section-kicker">How I handle data &amp; access</p>
+        <h2 class="section-title">Security &amp; Privacy</h2>
+        <p class="section-sub">An honest summary of what's in place today and what I'd add for a client with sensitive data — I'd rather be upfront than oversell.</p>
+      </div>
+      <div class="sec-grid reveal">
+        <div class="sec-col sec-now">
+          <h3 class="sec-h"><span class="sec-tag ok">In place today</span></h3>
+          <ul class="sec-list">
+            <li>Identity sign-in — people authenticate with their Google identity; no shared passwords.</li>
+            <li>Server-side permission guards — every role check runs on the server, never trusted from the browser.</li>
+            <li>Role-filtered access — users see only the tabs and records their role allows.</li>
+            <li>Tenant isolation by design — a four-tier structure keeps each church's data in its own engine.</li>
+            <li>Audit logging — sensitive actions (e.g. in the farm hub) record who changed what and when.</li>
+            <li>Hybrid redundancy — data runs in two stores in parallel (replication for safety), verified by matching record counts.</li>
+            <li>Privacy in this portfolio — every screenshot uses anonymous demo data; no real personal records are shown.</li>
+          </ul>
+        </div>
+        <div class="sec-col sec-next">
+          <h3 class="sec-h"><span class="sec-tag plan">Added for sensitive / enterprise data</span></h3>
+          <ul class="sec-list">
+            <li>PostgreSQL as the system of record (not Google Sheets) for sensitive customer data.</li>
+            <li>Encrypted automated backups with tested restores, and encryption in transit &amp; at rest.</li>
+            <li>Monitoring &amp; alerting for uptime and errors, plus incident response steps.</li>
+            <li>Least-privilege access and a separate staging environment.</li>
+            <li>An independent security review before going live with real data.</li>
+            <li>Architecture &amp; deployment documentation handed over with the system.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="sec-note reveal">A clear distinction I keep in mind: running two copies of data in parallel is <b>replication</b> for safety — it is not the same as a <b>backup</b>. A separate, recoverable backup (and a tested recovery procedure) is still needed, because one bad change can affect both copies. That belongs in the right-hand column, scoped per project.</p>
+      <p class="sec-note reveal">For a client project, I scope these to your requirements and start with a small pilot so you can verify security and reliability before trusting the full dataset. A downloadable technical security overview can be provided for systems involving sensitive information.</p>
+    </section>
+
+    <!-- Engagement & Pricing -->
+    <section class="pricing" id="pricing">
+      <div class="section-head reveal">
+        <p class="section-kicker">How a project works commercially</p>
+        <h2 class="section-title">Engagement &amp; Pricing</h2>
+        <p class="section-sub">Every system is different, so I don't list fixed prices. Instead, here are the ways we can work together — each quote is written for your specific project.</p>
+      </div>
+      <div class="price-grid reveal">
+        <div class="price-card">
+          <h3>Fixed-price project</h3>
+          <p class="price-for">Best for clearly defined applications</p>
+          <p>One agreed price for an agreed scope — you know the cost up front.</p>
+        </div>
+        <div class="price-card">
+          <h3>Milestone-based</h3>
+          <p class="price-for">Best for larger systems</p>
+          <p>The system is split into milestones, each delivered and paid in stages.</p>
+        </div>
+        <div class="price-card">
+          <h3>Maintenance agreement</h3>
+          <p class="price-for">Best for existing applications</p>
+          <p>Ongoing support, updates and fixes for a system already in use.</p>
+        </div>
+      </div>
+      <div class="price-note reveal">
+        <p><b>Every quotation spells out:</b> included features · excluded features · delivery milestones · payment arrangements · revision limits · hosting &amp; third-party costs · maintenance.</p>
+        <p class="price-adult">I'm currently a student, so any contracts, payments and legal arrangements are handled with appropriate adult support.</p>
+      </div>
+      <div class="price-cta reveal"><a class="btn btn-primary" href="#contact">Start a project →</a></div>
+    </section>
+  </main>
+
+  <!-- Footer / contact -->
+  <footer class="footer" id="contact">
+    <div class="footer-inner reveal">
+      <img class="footer-logo" src="assets/brand/deyshu-logo.png" alt="Deyshu Services" />
+      <h2 class="footer-title">Let's build something.</h2>
+      <p class="footer-sub">Have a project or a role in mind? Send a quick inquiry — it opens in your email, ready to send.</p>
+
+      <!-- Hiring / inquiry form (opens the visitor's email) -->
+      <form class="hire-form" id="hire-form" novalidate>
+        <div class="hf-row">
+          <label class="hf-field"><span>Your name</span>
+            <input type="text" id="hf-name" name="name" autocomplete="name" required placeholder="Jane Dela Cruz" /></label>
+          <label class="hf-field"><span>Your email</span>
+            <input type="email" id="hf-email" name="email" autocomplete="email" placeholder="jane@company.com" /></label>
+        </div>
+        <label class="hf-field"><span>What do you need?</span>
+          <select id="hf-type" name="type">
+            <option>Web development</option>
+            <option>Database system</option>
+            <option>Automation</option>
+            <option>AI integration</option>
+            <option>Desktop application</option>
+            <option>A live demo of a project</option>
+            <option>Something else</option>
+          </select></label>
+        <label class="hf-field"><span>Message</span>
+          <textarea id="hf-msg" name="message" rows="4" placeholder="Tell me a bit about your project, timeline and goals…"></textarea></label>
+        <button type="submit" class="btn btn-primary hf-send">Send inquiry →</button>
+        <p class="hf-note" id="hf-note" hidden>This opens your email app with the message ready — just hit send. Prefer another channel? Use the contacts below.</p>
+      </form>
+
+      <div class="footer-connect">
+        <ul class="footer-contacts" id="footer-contacts"><li><a href="mailto:deyshuhub@gmail.com" target="_blank" rel="noopener"><span class="fc-label">Email</span><span class="fc-value">deyshuhub@gmail.com</span></a></li><li class="empty"><span><span class="fc-label">Website</span><span class="fc-value">deyshuservices.site</span></span></li><li><a href="https://www.instagram.com/dey_shu" target="_blank" rel="noopener"><span class="fc-label">Instagram</span><span class="fc-value">@dey_shu</span></a></li><li><a href="https://t.me/deyshuhub" target="_blank" rel="noopener"><span class="fc-label">Telegram</span><span class="fc-value">@deyshuhub</span></a></li><li><a href="https://line.me/ti/p/sdFnGPeHfw" target="_blank" rel="noopener"><span class="fc-label">LINE</span><span class="fc-value">Add on LINE</span></a></li><li><a href="https://www.facebook.com/share/1EXriuE2cj/" target="_blank" rel="noopener"><span class="fc-label">Facebook</span><span class="fc-value">Facebook</span></a></li><li><a href="tel:+886900538746" target="_blank" rel="noopener"><span class="fc-label">Phone</span><span class="fc-value">+886 900 538 746</span></a></li></ul>
+        <figure class="footer-qr">
+          <img src="assets/brand/contact-qr.png" alt="QR code to save DEYSHU contacts" loading="lazy" />
+          <figcaption>Scan to save my contacts</figcaption>
+        </figure>
+      </div>
+      <p class="footer-fine">© <span id="year">2026</span> DEYSHU · Deyshu Services · <span id="footer-location">Taiwan</span></p>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close image">×</button>
+    <img id="lightbox-img" alt="" />
+    <p class="lightbox-cap" id="lightbox-cap"></p>
+  </div>
+
+  <div id="google_translate_element" style="position:fixed;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none" aria-hidden="true"></div>
+  <script src="script.js"></script>
+  <script src="lang.js"></script>
+</body>
+</html>
